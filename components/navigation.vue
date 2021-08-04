@@ -11,7 +11,11 @@
       <li>Kontakt</li>
     </ul>
     <div class="bottom-contact" v-show="state">
-      <div class="socials">facebook icon</div>
+      <div class="socials">
+        <icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24" />
+        <icons-socials-instagram :fill="'#A5A5A5'" :width="24" :height="24" />
+        <icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24" />
+      </div>
       <div class="contact-row">
         <button>Telefon</button>
         <button>Email</button>
@@ -97,7 +101,7 @@ export default {
   left: 0;
   padding: 124px 36px 0 36px;
   li {
-    margin: 24px 0;
+    margin: 18px 0;
     font-weight: 200;
     &:nth-child(1) {
       font-weight: 300;
@@ -119,6 +123,10 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 36px;
+  svg {
+    margin: 0 18px;
+  }
 }
 .contact-row {
   display: flex;
