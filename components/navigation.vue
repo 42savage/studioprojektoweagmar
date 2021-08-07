@@ -4,13 +4,17 @@
       <p class="small">Studio projektowe</p>
       <p class="big">AGMAR</p>
     </div>
-    <ul class="list" :class="{ mob: state }" v-show="state">
-      <li>O nas</li>
-      <li>Oferta</li>
-      <li>Realizacje</li>
-      <li>Kontakt</li>
+    <ul ref="list" class="list mob">
+      <li @click="changeState">
+        <NuxtLink class="link" to="/">Home</NuxtLink>
+      </li>
+      <li @click="changeState">
+        <NuxtLink class="link" to="/oferta">Oferta</NuxtLink>
+      </li>
+      <li @click="changeState">Realizacje</li>
+      <li @click="changeState">Kontakt</li>
     </ul>
-    <div class="bottom-contact" v-show="state">
+    <div ref="bottom" class="bottom-contact">
       <div class="socials">
         <icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24" />
         <icons-socials-instagram :fill="'#A5A5A5'" :width="24" :height="24" />
@@ -21,7 +25,7 @@
         <button>Email</button>
       </div>
     </div>
-    <button @click="changeState" class="hamButton">
+    <button ref="hamBtn" @click="changeState" class="hamButton">
       <div class="line"></div>
       <div class="line"></div>
       <div class="line"></div>
@@ -35,12 +39,65 @@ export default {
   data() {
     return {
       state: false,
+      tl: this.$gsap.timeline({ paused: true }),
     }
   },
   methods: {
     changeState() {
       this.state = !this.state
+      if (this.state) {
+        this.tl.play()
+      } else {
+        this.tl.reverse()
+      }
     },
+  },
+  mounted() {
+    const tl = this.tl
+    tl.to([this.$refs.bottom, this.$refs.list], {
+      display: 'flex',
+      opacity: 1,
+    })
+    tl.from(this.$refs.list.children, {
+      x: 200,
+      opacity: 0,
+      stagger: {
+        each: 0.1,
+      },
+    })
+      .from(
+        this.$refs.bottom.children,
+        {
+          y: 100,
+          opacity: 0,
+          stagger: 0.1,
+        },
+        '<'
+      )
+      .to(
+        this.$refs.hamBtn.children[2],
+        {
+          rotation: 45,
+          yPercent: -500,
+        },
+        '30%-=menu'
+      )
+      .to(
+        this.$refs.hamBtn.children[0],
+        {
+          rotation: -45,
+          width: '24px',
+          yPercent: 500,
+        },
+        '30%-=menu'
+      )
+      .to(
+        this.$refs.hamBtn.children[1],
+        {
+          visibility: 'hidden',
+        },
+        '50%-=menu'
+      )
   },
 }
 </script>
@@ -54,6 +111,7 @@ export default {
   padding: 48px 36px 0;
   width: 100%;
   position: fixed;
+  top: 0;
 }
 .logo {
   display: flex;
@@ -61,6 +119,7 @@ export default {
   flex-direction: column;
   align-items: center;
   color: white;
+  z-index: 999;
   .small {
     font-size: 12px;
   }
@@ -74,7 +133,7 @@ export default {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  z-index: 2;
+  z-index: 999;
   .line {
     width: 36px;
     height: 3px;
@@ -85,13 +144,14 @@ export default {
     }
   }
 }
-.list {
-  color: white;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-}
+
 .mob {
+  color: white;
+  background: #21252a;
+  list-style-type: none;
+  display: none;
+  opacity: 0;
+  flex-direction: row;
   font-size: 48px;
   flex-direction: column;
   width: 100%;
@@ -106,10 +166,14 @@ export default {
     &:nth-child(1) {
       font-weight: 300;
     }
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }
 .bottom-contact {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
