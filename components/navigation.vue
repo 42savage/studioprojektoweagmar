@@ -1,9 +1,11 @@
 <template>
-  <nav class="main-navigation">
-    <div class="logo">
-      <p class="small">Studio projektowe</p>
-      <p class="big">AGMAR</p>
-    </div>
+  <nav class="main-navigation" v-scroll-lock="state">
+    <nuxt-link class="homeBtn" to="/">
+      <div class="logo">
+        <p class="small">Studio projektowe</p>
+        <p class="big">AGMAR</p>
+      </div>
+    </nuxt-link>
     <ul ref="list" class="list mob">
       <li @click="changeState">
         <NuxtLink class="link" to="/">Home</NuxtLink>
@@ -21,8 +23,8 @@
         <icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24" />
       </div>
       <div class="contact-row">
-        <button>Telefon</button>
-        <button>Email</button>
+        <a class="button" href="tel:698088271">Telefon</a>
+        <a class="button" href="mailto: meble@agmar.pl">Email</a>
       </div>
     </div>
     <button ref="hamBtn" @click="changeState" class="hamButton">
@@ -103,6 +105,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.homeBtn {
+  text-decoration: none;
+}
 .main-navigation {
   display: flex;
   justify-content: space-between;
@@ -112,6 +117,7 @@ export default {
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 10;
 }
 .logo {
   display: flex;
@@ -197,13 +203,17 @@ export default {
   flex-direction: row;
   border-top: 1px solid #393c46;
   width: 100%;
-  button {
+  .button {
     background: none;
     border: none;
     width: 100%;
     height: 60px;
     font-size: 24px;
     color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 200;
     &:nth-child(1) {
       border-right: 1px solid #393c46;
