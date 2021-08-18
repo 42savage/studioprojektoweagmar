@@ -1,16 +1,12 @@
 <template>
   <div class="wrapper">
     <p class="title">{{ title }}</p>
-    <p class="content">Indywidualny projekt w skład którego wchodzi:</p>
-    <ul>
-      <li>pierwszy punkt</li>
-      <li>drugi punkt</li>
-      <li>trzeci punkt</li>
-      <li>czwarty punkt</li>
+    <p class="content">{{ content }}</p>
+    <ul v-for="element in list" :key="element.id">
+      <li>{{ element }}</li>
     </ul>
     <p class="content">
-      Proces przebiega dosyć prosto, korzystając z narzędzi pomiarowych odlanych
-      z gówna z szaletów kobylańskich pomiaru, polska język trudna.
+      {{ text }}
     </p>
     <nuxt-link :to="`offer/${route}`" class="reach"
       >Dowiedz się więcej</nuxt-link
@@ -28,6 +24,17 @@ export default {
     route: {
       type: String,
       default: 'Projekt #',
+    },
+    content: {
+      type: String,
+      default: 'Content goes here',
+    },
+    list: {
+      type: Array,
+    },
+    text: {
+      type: String,
+      default: 'Some text goes here',
     },
   },
 }

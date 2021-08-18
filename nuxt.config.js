@@ -29,6 +29,7 @@ export default {
   plugins: [
     { src: '~/plugins/gsap.js' },
     { src: '~/plugins/scrollLock.js', mode: 'client' },
+    { src: '~/plugins/vuex-sync' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

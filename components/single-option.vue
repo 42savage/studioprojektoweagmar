@@ -1,11 +1,13 @@
 <template>
-  <div class="box">
-    <!-- <icons-pictograms-bulb /> -->
-    <component :is="icon" />
+  <div class="box" :class="{ isActive: !active }">
+    <div class="ad" v-if="!active">
+      <p>Projekt koncepcyjny</p>
+    </div>
+    <component v-if="active" :is="icon" />
+    <component v-else :is="icon" :fill="'#393C46'" />
     <p class="title">{{ title }}</p>
     <p class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor
+      {{ content }}
     </p>
   </div>
 </template>
@@ -15,21 +17,48 @@ export default {
   props: {
     icon: {
       type: String,
-      default: 'bulb',
+      default: 'icons-pictograms-bulb',
     },
     title: {
       type: String,
       default: 'Punkt #?',
     },
-    icon: {
+    content: {
       type: String,
-      default: 'icons-pictograms-bulb',
+      default:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+    },
+    fill: {
+      type: String,
+      default: 'white',
+    },
+    active: {
+      type: Boolean,
+      default: false,
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.isActive {
+  p {
+    color: #393c46;
+  }
+}
+.ad {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 142px;
+  p {
+    color: white;
+    font-size: 12px;
+    padding: 6px 12px;
+    border: 1px solid white;
+  }
+}
 .box {
   width: 180px;
   height: 180px;
@@ -39,6 +68,7 @@ export default {
   align-items: center;
   flex-direction: column;
   margin: 18px 0;
+  position: relative;
   &:nth-child(1) {
     margin-top: 0;
   }

@@ -4,6 +4,7 @@
     <Nuxt />
   </div>
 </template>
+
 <style>
 * {
   margin: 0;

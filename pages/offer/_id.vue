@@ -5,48 +5,64 @@
       :style="{
         background:
           'linear-gradient(0deg, #21252A 0%, rgba(0, 0, 0, 0) 29.61%), linear-gradient(180deg, #1C1F23 19.27%, rgba(0, 0, 0, 0.46) 100%), url(' +
-          require(`@/assets/${image}.jpg`) +
+          require(`@/assets/${specifiedOffer.backgroundURI}.jpg`) +
           ') no-repeat center center / cover',
       }"
     >
       <entryTitle
         title="Oferta"
-        :subtitle="$route.params.id"
+        :subtitle="specifiedOffer.title"
         :topMargin="0"
         :titleMargin="132"
       />
-      <p class="content">Indywidualny projekt w skład którego wchodzi:</p>
-      <ul class="list">
-        <li>pierwszy punkt</li>
-        <li>drugi punkt</li>
-        <li>trzeci punkt</li>
-        <li>czwarty punkt</li>
+      <p class="content">{{ specifiedOffer.content }}</p>
+      <ul v-for="element in specifiedOffer.list" class="list" :key="element.id">
+        <li>{{ element }}</li>
       </ul>
       <p class="content">
-        Proces przebiega dosyć prosto, korzystając z narzędzi pomiarowych
-        odlanych z gówna z szaletów kobylańskich pomiaru, polska język trudna.
+        {{ specifiedOffer.text }}
       </p>
     </div>
     <div class="options">
-      <single-option :title="'Punkt #1'" :icon="'icons-pictograms-bulb'" />
-      <single-option :title="'Punkt #2'" :icon="'icons-pictograms-headphone'" />
-      <single-option :title="'Punkt #3'" :icon="'icons-pictograms-stack'" />
-      <single-option :title="'Punkt #4'" :icon="'icons-pictograms-blur'" />
-      <single-option :title="'Punkt #5'" :icon="'icons-pictograms-folder'" />
+      <div v-for="option in offerOptions" :key="option.id">
+        <single-option
+          :title="option.title"
+          :icon="option.icon"
+          :content="option.content"
+          :active="option.active"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  data() {
-    return {
-      image: 's1',
-    }
+  computed: {
+    ...mapGetters({
+      offerOptions: 'offer/offerOptions',
+      specifiedOffer: 'offer/specifiedOffer',
+    }),
+    specifiedOptions() {
+      const result = []
+      const match = this.offerOptions.filter((offer) => {
+        if (offer.contains.includes(this.specifiedOffer.name)) {
+          return offer
+        }
+      })
+      for (let i = 0; i < this.offerOptions.length; i++) {
+        if (this.offerOptions[i] === match[i]) {
+          this.$store.dispatch('offer/setActive', match[i])
+          result.push(match[i])
+        }
+      }
+      return result
+    },
   },
-  mounted() {
-    console.log(this.$route.params.id)
-  },
+  methods: {},
+
+  mounted() {},
 }
 </script>
 

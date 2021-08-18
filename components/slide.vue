@@ -5,12 +5,10 @@
       'background-image': 'url(' + require(`@/assets/${image}.jpg`) + ')',
     }"
   >
-    <h1>Projektujemy wnętrza</h1>
-    <h2>Klasyczne i nowoczesne</h2>
+    <h1>{{ title }}</h1>
+    <h2>{{ subTitle }}</h2>
     <p>
-      Jesteśmy nowopowstałym studiem projektowym, które postawiło sobie za cel
-      tworzenie zarówno nowoczesnych jak i klasycznych wizualiacji przyjmenych
-      dla oka.
+      {{ text }}
     </p>
     <nuxt-link class="btn" to="/realizacje">Sprawdź nasze realizacje</nuxt-link>
   </div>
@@ -19,8 +17,24 @@
 <script>
 export default {
   props: {
+    title: {
+      type: String,
+      default: 'Tytuł',
+    },
+    subTitle: {
+      type: String,
+      default: 'Podtytuł',
+    },
+    text: {
+      type: String,
+      default: 'Tekst',
+    },
     image: {
       type: String,
+    },
+    route: {
+      type: String,
+      default: '#',
     },
   },
 }

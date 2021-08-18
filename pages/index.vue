@@ -1,25 +1,37 @@
 <template>
   <div class="container">
-    <div class="slider">
-      <div ref="slides" class="inner">
-        <slide :image="'s1'" />
-        <slide :image="'s2'" />
-        <slide :image="'s3'" />
+    <header class="slider">
+      <div class="inner">
+        <div v-for="slide in slides" :key="slide.id">
+          <slide
+            :image="slide.image"
+            :title="slide.title"
+            :subTitle="slide.subTitle"
+            :text="slide.text"
+            :route="slide.route"
+          />
+        </div>
       </div>
       <div class="slider-navigation">
         <div class="counter">
-          <p>0{{ this.count + 1 }} / 0{{ slidesLength }}</p>
+          <p>0{{ currSlide + 1 }} / 0{{ slides.length }}</p>
         </div>
         <div class="controls"><icons-arrow /><icons-arrow /></div>
       </div>
-    </div>
-    <div class="offer">
+    </header>
+    <section id="offer" class="offer">
       <entryTitle :title="'Oferta'" :subtitle="'Nasza oferta'" />
-      <offerBox :route="'Projekt wykonawczy'" :title="'Projekt wykonawczy'" />
-      <offerBox :route="'Projekt koncepcyjny'" :title="'Projekt koncepcyjny'" />
-      <offerBox :route="'Projekt kuchni'" :title="'Projekt kuchni'" />
-    </div>
-    <div class="realisations">
+      <div v-for="offer in offerList" :key="offer.id">
+        <offerBox
+          :route="offer.name"
+          :title="offer.title"
+          :content="offer.content"
+          :list="offer.list"
+          :text="offer.text"
+        />
+      </div>
+    </section>
+    <section class="realisations">
       <entryTitle
         :title="'Realizacje'"
         :subtitle="'Nasze realizacje'"
@@ -34,8 +46,8 @@
         velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
       <realisationGallery />
-    </div>
-    <div class="contact">
+    </section>
+    <section id="contact" class="contact">
       <entryTitle
         :title="'Kontakt'"
         :subtitle="'Skontaktuj się z nami'"
@@ -44,36 +56,40 @@
         :bottomMargin="0"
       />
       <contactForm />
-    </div>
-    <div class="footer">
+    </section>
+    <footer>
       <p class="author">Copryright <span>Strony internetowe Radom</span></p>
-    </div>
+    </footer>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data() {
-    return {
-      count: 0,
-      slidesLength: 0,
-    }
+    return { currSlide: 0 }
   },
-  mounted() {
-    this.slidesLength = this.$refs.slides.children.length
+  computed: {
+    ...mapGetters({
+      offerList: 'offer/offerList',
+      slides: 'slider/slides',
+    }),
   },
 }
 </script>
 <style scoped lang="scss">
-.slider {
+.inner {
   display: flex;
   flex-direction: row;
   overflow: hidden;
   width: 100vw;
-  flex-shrink: 0;
   height: 100vh;
   position: relative;
   z-index: -1;
+  div {
+    flex-shrink: 0;
+    width: 100%;
+  }
 }
 .slider-navigation {
   position: absolute;

@@ -1,7 +1,7 @@
 <template>
   <nav class="main-navigation" v-scroll-lock="state">
     <nuxt-link class="homeBtn" to="/">
-      <div class="logo">
+      <div @click="changeState('logo')" class="logo">
         <p class="small">Studio projektowe</p>
         <p class="big">AGMAR</p>
       </div>
@@ -11,10 +11,12 @@
         <NuxtLink class="link" to="/">Home</NuxtLink>
       </li>
       <li @click="changeState">
-        <NuxtLink class="link" to="/oferta">Oferta</NuxtLink>
+        <a href="#offer" class="link">Oferta</a>
       </li>
       <li @click="changeState">Realizacje</li>
-      <li @click="changeState">Kontakt</li>
+      <li @click="changeState">
+        <a href="#contact" class="link">Kontakt</a>
+      </li>
     </ul>
     <div ref="bottom" class="bottom-contact">
       <div class="socials">
@@ -45,12 +47,28 @@ export default {
     }
   },
   methods: {
-    changeState() {
-      this.state = !this.state
-      if (this.state) {
-        this.tl.play()
-      } else {
+    changeState(e) {
+      // If user clicks on logo go back to homepage;
+      // If users is on index page and scrolled at least 800px down scoll top
+      // If menu is opened close menu and set state to false because of body overflow locked
+      if (e === 'logo') {
         this.tl.reverse()
+        this.state = false
+        if (
+          this.state === false &&
+          this.$route.name === 'index' &&
+          window.scrollY > 800
+        ) {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+        // if click comes from natural menu button on menu link just play/reverse menu animation
+      } else {
+        this.state = !this.state
+        if (this.state) {
+          this.tl.play()
+        } else {
+          this.tl.reverse()
+        }
       }
     },
   },
@@ -105,6 +123,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.homeBtn {
+  z-index: 99;
+}
 .homeBtn {
   text-decoration: none;
 }
@@ -219,5 +240,13 @@ export default {
       border-right: 1px solid #393c46;
     }
   }
+}
+.home-enter-active,
+.home-leave-active {
+  transition: opacity 0.5s;
+}
+.home-enter,
+.home-leave-active {
+  opacity: 0;
 }
 </style>
