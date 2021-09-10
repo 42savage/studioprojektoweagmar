@@ -12,7 +12,6 @@ export const state = () => ({
         'Wizualizacje 3D',
       ],
       text: 'Projekt wykonywany jest bezpośrednio w domu u klienta podczas pomiaru.',
-      options: 2,
     },
     {
       id: 1,
@@ -27,7 +26,6 @@ export const state = () => ({
         'Specyfikacja produktów wraz z cenami',
       ],
       text: 'Projekt wykonawczy jest nieco bardziej czasochłonny niż projekt koncepcyjny, dlatego nie jesteśmy w stanie wykonać go na miejscu u klienta lecz u nas w biurze.',
-      options: 3,
     },
     {
       id: 2,
@@ -37,64 +35,66 @@ export const state = () => ({
       content: 'Indywidualny projekt w skład którego wchodzi:',
       list: ['Pierwszy punkt', 'drugi punkt', 'trzeci punkt', 'czwarty punkt'],
       text: 'Zarówno jak projekt koncepcyjny, projekt kuchni jesteśmy w stanie wykonać u klienta. Wizualizacja już podczas pomiaru znacznie pomaga wyobraźić sobie przyszłą kuchnie.',
-      options: 5,
     },
   ],
   offerOptions: [
     {
       id: 0,
       title: 'Punkt #1',
+      contains: ['projekt-kuchni', 'projekt-koncepcyjny', 'projekt-wykonawczy'],
       content: 'Coś tam',
       icon: 'icons-pictograms-bulb',
-      contains: ['projekt-kuchni', 'projekt-koncepcyjny', 'projekt-wykonawczy'],
-      active: true,
+      active: false,
     },
     {
       id: 1,
       title: 'Punkt #2',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ',
-      icon: 'icons-pictograms-headphone',
       contains: ['projekt-kuchni', 'projekt-koncepcyjny', 'projekt-wykonawczy'],
+      content: 'Drugie coś tam ',
+      icon: 'icons-pictograms-headphone',
       active: false,
     },
     {
       id: 2,
       title: 'Punkt #3',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ',
-      icon: 'icons-pictograms-stack',
       contains: ['projekt-koncepcyjny', 'projekt-wykonawczy'],
+      content: 'Trzecie coś tam',
+      icon: 'icons-pictograms-stack',
       active: false,
+      route: { name: 'Projekt koncepcyjny', to: 'projekt-koncepcyjny' },
     },
     {
       id: 3,
       title: 'Punkt #4',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ',
-      icon: 'icons-pictograms-blur',
       contains: ['projekt-wykonawczy'],
+      content: 'Czwarte i ostatnie coś tam',
+      icon: 'icons-pictograms-blur',
       active: false,
+      route: { name: 'Projekt wykonawczy', to: 'projekt-wykonawczy' },
     },
     {
       id: 4,
       title: 'Punkt #5',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ',
-      icon: 'icons-pictograms-folder',
       contains: ['projekt-wykonawczy'],
+      content: 'Jednak piąte jest ostatnie',
+      icon: 'icons-pictograms-folder',
       active: false,
+      route: { name: 'Projekt wykonawczy', to: 'projekt-wykonawczy' },
     },
   ],
-  route: '',
 })
 
 export const mutations = {
   setActive(state, payload) {
-    state.offerOptions.forEach((offer) => {
-      if ((offer = payload)) {
-        offer.active = true
+    for (let i = 0; i < state.offerOptions.length; i++) {
+      if (state.offerOptions[i] === payload[i]) {
+        state.offerOptions[i].active = true
       }
+    }
+  },
+  setNotActive(state) {
+    state.offerOptions.forEach((option) => {
+      option.active = false
     })
   },
 }
@@ -102,6 +102,9 @@ export const mutations = {
 export const actions = {
   setActive({ commit }, payload) {
     commit('setActive', payload)
+  },
+  setNotActive({ commit }) {
+    commit('setNotActive')
   },
 }
 
@@ -116,5 +119,12 @@ export const getters = {
     return state.offerList.find(
       (offer) => offer.name === rootState.route.params.id
     )
+  },
+  specifiedOptions(state, getters, rootState) {
+    return state.offerOptions.filter((option) => {
+      if (option.contains.includes(rootState.route.params.id)) {
+        return option
+      }
+    })
   },
 }

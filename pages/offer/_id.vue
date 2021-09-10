@@ -30,6 +30,7 @@
           :icon="option.icon"
           :content="option.content"
           :active="option.active"
+          :route="option.route"
         />
       </div>
     </div>
@@ -37,32 +38,27 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
       offerOptions: 'offer/offerOptions',
       specifiedOffer: 'offer/specifiedOffer',
+      specifiedOptions: 'offer/specifiedOptions',
     }),
-    specifiedOptions() {
-      const result = []
-      const match = this.offerOptions.filter((offer) => {
-        if (offer.contains.includes(this.specifiedOffer.name)) {
-          return offer
-        }
-      })
-      for (let i = 0; i < this.offerOptions.length; i++) {
-        if (this.offerOptions[i] === match[i]) {
-          this.$store.dispatch('offer/setActive', match[i])
-          result.push(match[i])
-        }
-      }
-      return result
-    },
   },
-  methods: {},
-
-  mounted() {},
+  methods: {
+    ...mapActions({
+      setActive: 'offer/setActive',
+      setNotActive: 'offer/setNotActive',
+    }),
+  },
+  mounted() {
+    this.setActive(this.specifiedOptions)
+  },
+  beforeDestroy() {
+    this.setNotActive()
+  },
 }
 </script>
 

@@ -20,9 +20,15 @@
     </ul>
     <div ref="bottom" class="bottom-contact">
       <div class="socials">
-        <icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24" />
-        <icons-socials-instagram :fill="'#A5A5A5'" :width="24" :height="24" />
-        <icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24" />
+        <a href="https://www.facebook.com/MebleNaWymiarAgmar"
+          ><icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24"
+        /></a>
+        <a href="https://www.instagram.com/agmarmeblenawymiar/"
+          ><icons-socials-instagram :fill="'#A5A5A5'" :width="24" :height="24"
+        /></a>
+        <a href="https://mebleagmar.pl/"
+          ><icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24"
+        /></a>
       </div>
       <div class="contact-row">
         <a class="button" href="tel:698088271">Telefon</a>

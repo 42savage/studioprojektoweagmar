@@ -1,15 +1,17 @@
 <template>
-  <div class="box" :class="{ isActive: !active }">
-    <div class="ad" v-if="!active">
-      <p>Projekt koncepcyjny</p>
+  <client-only>
+    <div class="box" :class="{ isActive: !active }">
+      <div class="ad" v-if="!active">
+        <Nuxt-link class="link" :to="route.to">{{ route.name }}</Nuxt-link>
+      </div>
+      <component v-if="active" :is="icon" />
+      <component v-else :is="icon" :fill="'#393C46'" />
+      <p class="title">{{ title }}</p>
+      <p class="content">
+        {{ content }}
+      </p>
     </div>
-    <component v-if="active" :is="icon" />
-    <component v-else :is="icon" :fill="'#393C46'" />
-    <p class="title">{{ title }}</p>
-    <p class="content">
-      {{ content }}
-    </p>
-  </div>
+  </client-only>
 </template>
 
 <script>
@@ -36,6 +38,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    route: {
+      type: Object,
+      default: () => ({
+        name: 'Test',
+        to: '/test',
+      }),
+    },
   },
 }
 </script>
@@ -52,11 +61,12 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 142px;
-  p {
+  .link {
     color: white;
     font-size: 12px;
     padding: 6px 12px;
     border: 1px solid white;
+    text-decoration: none;
   }
 }
 .box {

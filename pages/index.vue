@@ -2,8 +2,8 @@
   <div class="container">
     <header class="slider">
       <div class="inner">
-        <div v-for="slide in slides" :key="slide.id">
-          <slide
+        <div v-for="slide in slides" :key="slide.id" ref="slider">
+          <singleSlide
             :image="slide.image"
             :title="slide.title"
             :subTitle="slide.subTitle"
@@ -14,9 +14,12 @@
       </div>
       <div class="slider-navigation">
         <div class="counter">
-          <p>0{{ currSlide + 1 }} / 0{{ slides.length }}</p>
+          <p>0{{ currSlide }} / 0{{ slides.length }}</p>
         </div>
-        <div class="controls"><icons-arrow /><icons-arrow /></div>
+        <div class="controls">
+          <button @click="prevSlide"><icons-arrow /></button>
+          <button @click="nextSlide"><icons-arrow /></button>
+        </div>
       </div>
     </header>
     <section id="offer" class="offer">
@@ -67,7 +70,9 @@
 import { mapGetters } from 'vuex'
 export default {
   data() {
-    return { currSlide: 0 }
+    return {
+      currSlide: 1,
+    }
   },
   computed: {
     ...mapGetters({
@@ -75,6 +80,15 @@ export default {
       slides: 'slider/slides',
     }),
   },
+  methods: {
+    prevSlide() {
+      this.tl.reverse()
+    },
+    nextSlide() {
+      this.tl.play()
+    },
+  },
+  mounted() {},
 }
 </script>
 <style scoped lang="scss">
@@ -82,7 +96,6 @@ export default {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  width: 100vw;
   height: 100vh;
   position: relative;
   z-index: -1;
@@ -106,9 +119,13 @@ export default {
   }
 }
 .controls {
-  svg:nth-child(2) {
+  button {
+    margin: 0 6px;
+    background: none;
+    border: none;
+  }
+  button:nth-child(2) svg {
     transform: rotate(180deg);
-    margin-left: 12px;
   }
 }
 .entryText {
