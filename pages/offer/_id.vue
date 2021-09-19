@@ -15,13 +15,21 @@
         :topMargin="0"
         :titleMargin="132"
       />
-      <p class="content">{{ specifiedOffer.content }}</p>
-      <ul v-for="element in specifiedOffer.list" class="list" :key="element.id">
-        <li>{{ element }}</li>
-      </ul>
-      <p class="content">
-        {{ specifiedOffer.text }}
-      </p>
+      <div class="container">
+        <p class="content">{{ specifiedOffer.content }}</p>
+        <ul>
+          <li
+            v-for="element in specifiedOffer.list"
+            class="list"
+            :key="element.id"
+          >
+            <a>{{ element }}</a>
+          </li>
+        </ul>
+        <p class="content">
+          {{ specifiedOffer.text }}
+        </p>
+      </div>
     </div>
     <div class="options">
       <div v-for="option in offerOptions" :key="option.id">
@@ -87,5 +95,10 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 120px;
+  }
 }
 </style>

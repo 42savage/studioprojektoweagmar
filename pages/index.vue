@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <header class="slider">
+    <!-- <header class="slider">
       <div class="inner">
         <div v-for="slide in slides" :key="slide.id" ref="slider">
           <singleSlide
@@ -21,11 +21,19 @@
           <button @click="nextSlide"><icons-arrow /></button>
         </div>
       </div>
-    </header>
+    </header> -->
+    <carousel-slider />
+    <big-picture-slider />
     <section id="offer" class="offer">
-      <entryTitle :title="'Oferta'" :subtitle="'Nasza oferta'" />
-      <div v-for="offer in offerList" :key="offer.id">
+      <entryTitle
+        id="offer-title"
+        :title="'Oferta'"
+        :subtitle="'Nasza oferta'"
+      />
+      <div class="offerList">
         <offerBox
+          v-for="offer in offerList"
+          :key="offer.id"
           :route="offer.name"
           :title="offer.title"
           :content="offer.content"
@@ -34,7 +42,7 @@
         />
       </div>
     </section>
-    <section class="realisations">
+    <section class="realisations" id="realisations">
       <entryTitle
         :title="'Realizacje'"
         :subtitle="'Nasze realizacje'"
@@ -68,7 +76,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import bigPictureSlider from '~/components/big-picture-slider.vue'
 export default {
+  components: { bigPictureSlider },
   data() {
     return {
       currSlide: 1,
@@ -130,7 +140,7 @@ export default {
 }
 .entryText {
   color: white;
-  padding: 0 36px 0 36px;
+  padding: 36px;
 }
 .author {
   font-size: 16px;
@@ -140,6 +150,20 @@ export default {
   margin: 30px 0;
   span {
     color: #00d1ff;
+  }
+}
+@media (min-width: 1024px) {
+  .offerList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 120px;
+  }
+  .entryText {
+    margin: 0 120px 60px;
+    width: 600px;
   }
 }
 </style>

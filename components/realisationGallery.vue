@@ -1,13 +1,23 @@
 <template>
   <div>
     <div class="wrapper">
-      <div
-        v-for="(image, index) in images"
-        :key="index"
-        class="singleRealisation"
-      >
-        <img :src="require(`@/assets/${image.src}`)" :alt="image.alt" />
-      </div>
+      <client-only>
+        <carousel
+          id="gallery"
+          :perPage="2"
+          :loop="true"
+          :paginationEnabled="false"
+          :navigationEnabled="false"
+        >
+          <slide
+            v-for="(image, index) in images"
+            :key="index"
+            class="singleRealisation"
+          >
+            <img :src="require(`@/assets/${image.src}`)" :alt="image.alt" />
+          </slide>
+        </carousel>
+      </client-only>
     </div>
     <div class="nav">
       <button class="navItem">
@@ -59,7 +69,7 @@ export default {
     width: 100%;
     height: 480px;
     object-fit: cover;
-    padding: 36px;
+    padding: 12px;
   }
 }
 .navItem {
@@ -75,5 +85,9 @@ export default {
   display: flex;
   justify-content: flex-end;
   padding: 0 36px;
+}
+#gallery {
+  margin-left: 120px;
+  margin-right: 120px;
 }
 </style>

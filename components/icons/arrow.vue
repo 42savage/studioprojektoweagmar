@@ -6,7 +6,7 @@
     :fill="fill"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M0 6L10 11.7735V0.226497L0 6ZM36 5L9 5V7L36 7V5Z" fill="#CECECE" />
+    <path d="M0 6L10 11.7735V0.226497L0 6ZM36 5L9 5V7L36 7V5Z" :fill="fill" />
   </svg>
 </template>
 
@@ -23,6 +23,7 @@ export default {
     },
     fill: {
       type: String,
+      default: '#CECECE',
     },
   },
 }

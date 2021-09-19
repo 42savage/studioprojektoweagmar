@@ -1,0 +1,17 @@
+<template>
+  <svg
+    width="14"
+    height="16"
+    viewBox="0 0 14 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M14 8L0.499999 15.7942L0.5 0.205771L14 8Z" fill="#DEBE95" />
+  </svg>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style></style>
