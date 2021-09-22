@@ -1,27 +1,27 @@
 <template>
   <div class="bar">
     <div class="socials">
-      <a>
+      <a href="https://www.facebook.com/studioprojektowagmar" target="_blank">
         <icons-socials-facebook :fill="'white'" :width="24" :height="24" />
       </a>
-      <a>
+      <a href="https://www.instagram.com/agmarmeblenawymiar/" target="_blank">
         <icons-socials-instagram :fill="'white'" :width="24" :height="24" />
       </a>
-      <a>
+      <a href="https://mebleagmar.pl/" target="_blank">
         <icons-socials-web :fill="'white'" :width="24" :height="24" />
       </a>
     </div>
     <a class="phone">
-      <div>
+      <a href="tel:698088271">
         <icons-pictograms-phone :fill="'#DEBE95'" :width="34" :height="34" />
-        <p>123-456-789</p>
-      </div>
+        <span>698-088-271</span>
+      </a>
     </a>
     <a class="email">
-      <div>
+      <a href="mailto:daniel.meble@wp.pl">
         <icons-pictograms-email :fill="'#DEBE95'" :width="34" :height="34" />
-        <p>mail@mail.com</p>
-      </div>
+        <span>mail@mail.com</span>
+      </a>
     </a>
   </div>
 </template>
@@ -66,8 +66,10 @@ export default {}
 }
 .phone,
 .email {
-  div {
+  a {
     transform: rotate(-90deg);
+    text-decoration: none;
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -76,7 +78,7 @@ export default {}
       transform: rotate(90deg);
       width: 100%;
     }
-    p {
+    span {
       width: 180px;
     }
   }

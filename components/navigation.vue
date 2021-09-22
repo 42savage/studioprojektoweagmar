@@ -26,13 +26,13 @@
     </ul>
     <div ref="bottom" class="bottom-contact">
       <div class="socials">
-        <a href="https://www.facebook.com/MebleNaWymiarAgmar"
+        <a href="https://www.facebook.com/MebleNaWymiarAgmar" target="_blank"
           ><icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24"
         /></a>
-        <a href="https://www.instagram.com/agmarmeblenawymiar/"
+        <a href="https://www.instagram.com/agmarmeblenawymiar/" target="_blank"
           ><icons-socials-instagram :fill="'#A5A5A5'" :width="24" :height="24"
         /></a>
-        <a href="https://mebleagmar.pl/"
+        <a href="https://mebleagmar.pl/" target="_blank"
           ><icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24"
         /></a>
       </div>
