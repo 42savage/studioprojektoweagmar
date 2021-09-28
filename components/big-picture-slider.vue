@@ -99,6 +99,7 @@ export default {}
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .arrow {
   background: rgba(255, 255, 255, 0.06);

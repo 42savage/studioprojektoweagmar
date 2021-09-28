@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      showLoader: true,
+      showLoader: false,
     }
   },
   mounted() {
@@ -32,7 +32,7 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100vw;

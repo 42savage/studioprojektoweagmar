@@ -100,5 +100,11 @@ export default {
   .container {
     padding: 0 120px;
   }
+  .options {
+    flex-direction: row;
+    div {
+      margin: 0 3px;
+    }
+  }
 }
 </style>

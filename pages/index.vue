@@ -50,11 +50,9 @@
         :bottomMargin="42"
       />
       <p class="entryText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.
+        Do każdej realizacji podchodzimy indywidualnie. Nasze projekty to nie
+        tylko sucha wizualizacja ale także propozycje układów funkcyjnych czy
+        układy szuflad w szafach.
       </p>
       <realisationGallery />
     </section>
@@ -164,6 +162,7 @@ export default {
   .entryText {
     margin: 0 120px 60px;
     width: 600px;
+    padding: 0;
   }
 }
 </style>

@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="wrapper">
+    <div
+      class="wrapper"
+      @mouseenter="mouse.state = true"
+      @mouseleave=";(mouse.state = false), (mouse.posX = 0), (mouse.posY = 0)"
+      @mousemove="passPosition"
+    >
+      <hover v-if="mouse.state" :isMouseOn="mouse" />
       <client-only>
         <carousel
           id="gallery"
@@ -48,19 +54,32 @@ export default {
           src: 'r3.jpg',
         },
       ],
+      mouse: {
+        state: false,
+        posX: 0,
+        posY: 0,
+      },
     }
+  },
+  methods: {
+    passPosition(e) {
+      this.mouse.posX = e.clientX
+      this.mouse.posY = e.clientY
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
+  backface-visibility: hidden;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   overflow: hidden;
+  cursor: none;
 }
 .singleRealisation {
   width: 100%;
@@ -89,5 +108,10 @@ export default {
 #gallery {
   margin-left: 120px;
   margin-right: 120px;
+}
+@media (min-width: 1024px) {
+  .nav {
+    display: none;
+  }
 }
 </style>
