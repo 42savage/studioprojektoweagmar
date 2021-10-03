@@ -42,17 +42,37 @@
         />
       </div>
     </div>
+    <div class="description">
+      <h1>Description goes here!</h1>
+      <p>{{ specifiedOfferContent[0].text }}</p>
+      <client-only>
+        <carousel
+          :perPage="1"
+          :loop="true"
+          :paginationEnabled="false"
+          :navigationEnabled="false"
+        >
+          <slide
+            v-for="image in specifiedOfferContent[0].images"
+            :key="image.id"
+          >
+            <img :src="require(`~/assets/offer/${image}.jpg`)" />
+          </slide>
+        </carousel>
+      </client-only>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapGetters({
       offerOptions: 'offer/offerOptions',
       specifiedOffer: 'offer/specifiedOffer',
       specifiedOptions: 'offer/specifiedOptions',
+      specifiedOfferContent: 'offer/specifiedOfferContent',
     }),
   },
   methods: {
@@ -62,12 +82,12 @@ export default {
     }),
   },
   mounted() {
-    this.setActive(this.specifiedOptions)
+    this.setActive(this.specifiedOptions);
   },
   beforeDestroy() {
-    this.setNotActive()
+    this.setNotActive();
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

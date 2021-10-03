@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div class="slider">
+  <div class="wrapper f-col">
+    <div class="slider flex f-row">
       <div class="left-content">
         <div class="content">
           <p class="title">AGMAR</p>
@@ -11,8 +11,8 @@
             cel tworzenie zarówno nowoczesnych jak i klasycznych wizualiacji
             przyjmenych dla oka.
           </p>
-          <button class="checkBtn">
-            <div class="arrow">
+          <button class="checkBtn flex f-row f-center">
+            <div class="arrow flex f-center">
               <icons-arrow-right />
             </div>
             Sprawdź nasze realizacje
@@ -21,23 +21,23 @@
       </div>
       <div class="right-content">
         <div class="single-image">
-          <img src="@/assets/r1.jpg" alt="Image" />
+          <img src="r1.jpg" alt="Image" />
         </div>
-        <div class="custom-slider">
-          <img src="@/assets/custom-slider/fit1.jpg" alt="image" />
-          <img src="@/assets/custom-slider/fit2.jpg" alt="image" />
-          <img src="@/assets/custom-slider/fit3.jpg" alt="image" />
-          <img src="@/assets/custom-slider/fit4.jpg" alt="image" />
+        <div class="custom-slider f-row f-center">
+          <img src="custom-slider/fit1.jpg" alt="image" />
+          <img src="custom-slider/fit2.jpg" alt="image" />
+          <img src="custom-slider/fit3.jpg" alt="image" />
+          <img src="custom-slider/fit4.jpg" alt="image" />
         </div>
       </div>
     </div>
-    <div class="navigation">
-      <div class="counter">
+    <div class="navigation flex f-row">
+      <div class="counter flex f-center f-row">
         <p class="count">01</p>
         <div class="line"></div>
         <p class="name">Apartament "Bekas"</p>
       </div>
-      <div class="arrows">
+      <div class="arrows flex f-center f-row">
         <button>
           <icons-arrow :fill="'#565656'" />
         </button>
@@ -50,13 +50,11 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style lang="scss" scoped>
 .slider {
-  display: flex;
-  flex-direction: row;
   width: 100%;
 }
 .wrapper {
@@ -64,7 +62,6 @@ export default {}
   width: 100%;
   height: 100vh;
   padding: 162px 120px 0;
-  flex-direction: column;
 }
 .title {
   font-size: 92px;
@@ -95,10 +92,6 @@ export default {}
   font-size: 18px;
   font-weight: bold;
   margin-top: 36px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
 }
 .arrow {
@@ -106,9 +99,6 @@ export default {}
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   margin-right: 18px;
   &::after {
@@ -121,17 +111,7 @@ export default {}
   }
 }
 .content {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
   max-width: 400px;
-}
-.counter {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 .count,
 .name {
@@ -150,8 +130,6 @@ export default {}
   margin: 0 12px;
 }
 .navigation {
-  display: flex;
-  flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
@@ -159,10 +137,6 @@ export default {}
   margin-top: 18px;
 }
 .arrows {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
   button {
     background: none;
     border: none;
@@ -182,16 +156,12 @@ export default {}
   img {
     z-index: -1;
     width: 600px;
-    // height: 100%;
     position: absolute;
     right: 0;
   }
 }
 .custom-slider {
   display: none;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   img {
     width: 160px;
     margin: 0 8px;

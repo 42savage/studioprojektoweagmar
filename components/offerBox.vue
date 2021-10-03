@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper flex f-center f-col">
     <p class="title">{{ title }}</p>
     <p class="content">{{ content }}</p>
     <ul v-for="element in list" :key="element.id">
@@ -37,15 +37,11 @@ export default {
       default: 'Some text goes here',
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   margin: 6px 12px;
   border: 1px solid #393c46;
   color: #929292;

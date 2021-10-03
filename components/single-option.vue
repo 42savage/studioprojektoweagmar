@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <div class="box" :class="{ isActive: !active }">
+    <div class="box flex f-center f-col" :class="{ isActive: !active }">
       <div class="ad" v-if="!active">
         <Nuxt-link class="link" :to="route.to">{{ route.name }}</Nuxt-link>
       </div>
@@ -73,10 +73,6 @@ export default {
   width: 180px;
   height: 180px;
   border: 1px solid #393c46;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   margin: 18px 0;
   position: relative;
   &:nth-child(1) {

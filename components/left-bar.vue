@@ -1,6 +1,6 @@
 <template>
-  <div class="bar">
-    <div class="socials">
+  <div class="bar f-col">
+    <div class="socials f-center f-col">
       <a href="https://www.facebook.com/studioprojektowagmar" target="_blank">
         <icons-socials-facebook :fill="'white'" :width="24" :height="24" />
       </a>
@@ -11,18 +11,18 @@
         <icons-socials-web :fill="'white'" :width="24" :height="24" />
       </a>
     </div>
-    <a class="phone">
+    <div class="phone">
       <a href="tel:698088271">
         <icons-pictograms-phone :fill="'#DEBE95'" :width="34" :height="34" />
         <span>698-088-271</span>
       </a>
-    </a>
-    <a class="email">
-      <a href="mailto:daniel.meble@wp.pl">
+    </div>
+    <div class="email">
+      <a class="email" href="mailto:daniel.meble@wp.pl">
         <icons-pictograms-email :fill="'#DEBE95'" :width="34" :height="34" />
         <span>mail@mail.com</span>
       </a>
-    </a>
+    </div>
   </div>
 </template>
 
@@ -40,12 +40,9 @@ export default {}
   left: 0;
   top: 0;
   display: none;
-  flex-direction: column;
   justify-content: space-between;
 }
 .socials {
-  flex-direction: column;
-  align-items: center;
   border-bottom: 2px solid #393c46;
   a {
     margin: 12px 0;

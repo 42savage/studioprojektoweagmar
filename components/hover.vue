@@ -18,24 +18,38 @@ export default {
   },
   methods: {
     handleMouseMove(x, y) {
-      let cursor = this.$refs.cursor
-      cursor.style.cssText = `left: ${x}px; top: ${y}px`
+      let cursor = this.$refs.cursor;
+      this.$gsap.to(cursor, {
+        x: x - 950,
+        y: y,
+      });
+      if (this.isMouseOn.state === false) {
+        this.$gsap.to(cursor, {
+          opacity: 0,
+        });
+      } else {
+        this.$gsap.to(cursor, {
+          opacity: 1,
+        });
+      }
+      // cursor.style.cssText = `left: ${x}px; top: ${y}px`
     },
   },
   watch: {
     isMouseOn: {
       handler(val) {
-        this.handleMouseMove(val.posX, val.posY)
+        this.handleMouseMove(val.posX, val.posY);
       },
       deep: true,
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
 .circle {
   display: none;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 50%;

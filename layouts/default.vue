@@ -1,9 +1,9 @@
 <template>
   <div>
     <loader />
-    <left-bar />
     <navigation />
     <div ref="mainContainer">
+      <left-bar />
       <Nuxt />
     </div>
   </div>

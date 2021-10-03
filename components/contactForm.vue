@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <form>
+    <form class="flex f-center f-col">
       <input
         class="name input"
         type="text"
         placeholder="Twoje imię i nazwisko"
       />
       <input class="mail input" type="text" placeholder="Adres e-mail" />
-      <div clas="row">
+      <div clas="row flex f-center f-row">
         <input class="phone input" type="text" placeholder="Numer telefonu" />
         <input
           class="company input"
@@ -21,7 +21,7 @@
       ></textarea>
       <button class="submit">Wyślij wiadomość</button>
     </form>
-    <div class="contact">
+    <div class="contact flex f-col">
       <p class="title">Skontaktuj się z nami bezpośrednio</p>
       <div>
         <p>Adres:</p>
@@ -46,17 +46,9 @@ export default {}
 
 <style lang="scss" scoped>
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 36px;
   div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0 9px;
-    flex-direction: column;
     width: 100%;
   }
 }
@@ -78,10 +70,8 @@ form {
   margin-bottom: 6px;
 }
 .contact {
-  display: flex;
   justify-content: center;
   align-items: flex-start;
-  flex-direction: column;
   color: #929292;
   padding: 0 36px;
   p {

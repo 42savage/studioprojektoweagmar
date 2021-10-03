@@ -1,5 +1,5 @@
 <template>
-  <div ref="loader" class="wrapper" v-scroll-lock="showLoader">
+  <div ref="loader" class="wrapper f-center" v-scroll-lock="showLoader">
     <h1>Studio projektowe</h1>
   </div>
 </template>
@@ -9,12 +9,12 @@ export default {
   data() {
     return {
       showLoader: false,
-    }
+    };
   },
   mounted() {
     this.$nextTick(() => {
-      const tl = this.$gsap.timeline()
-      const target = this.$refs.loader
+      const tl = this.$gsap.timeline();
+      const target = this.$refs.loader;
       tl.fromTo(
         target,
         {
@@ -24,17 +24,15 @@ export default {
         {
           yPercent: 100,
         }
-      )
-    })
+      );
+    });
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
 .wrapper {
   display: none;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   background: #2c2e36;

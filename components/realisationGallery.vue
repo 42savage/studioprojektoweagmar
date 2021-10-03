@@ -1,12 +1,12 @@
 <template>
   <div>
     <div
-      class="wrapper"
+      class="wrapper flex f-center f-row"
       @mouseenter="mouse.state = true"
-      @mouseleave=";(mouse.state = false), (mouse.posX = 0), (mouse.posY = 0)"
+      @mouseleave="mouse.state = false"
       @mousemove="passPosition"
     >
-      <hover v-if="mouse.state" :isMouseOn="mouse" />
+      <hover :isMouseOn="mouse" />
       <client-only>
         <carousel
           id="gallery"
@@ -20,12 +20,13 @@
             :key="index"
             class="singleRealisation"
           >
-            <img :src="require(`@/assets/${image.src}`)" :alt="image.alt" />
+            <!-- <img :src="require(`@/assets/${image.src}`)" :alt="image.alt" /> -->
+            <img :src="`/${image.src}`" :alt="image.alt" />
           </slide>
         </carousel>
       </client-only>
     </div>
-    <div class="nav">
+    <div class="nav flex">
       <button class="navItem">
         <icons-smallArrow />
       </button>
@@ -59,27 +60,23 @@ export default {
         posX: 0,
         posY: 0,
       },
-    }
+    };
   },
   methods: {
     passPosition(e) {
-      this.mouse.posX = e.clientX
-      this.mouse.posY = e.clientY
+      this.mouse.posX = e.clientX;
+      this.mouse.posY = e.clientY;
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
   backface-visibility: hidden;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
   overflow: hidden;
-  cursor: none;
+  // cursor: none;
 }
 .singleRealisation {
   width: 100%;
@@ -101,7 +98,6 @@ export default {
 }
 .nav {
   width: 100%;
-  display: flex;
   justify-content: flex-end;
   padding: 0 36px;
 }

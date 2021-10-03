@@ -1,11 +1,11 @@
 <template>
   <nav
     v-if="this.$route.name === 'index'"
-    class="main-navigation"
+    class="main-navigation flex f-center f-row"
     v-scroll-lock="state"
   >
     <nuxt-link class="homeBtn" to="/">
-      <div @click="changeState('logo')" class="logo">
+      <div @click="changeState('logo')" class="logo flex f-center f-col">
         <p class="small">Studio projektowe</p>
         <p class="big">AGMAR</p>
       </div>
@@ -24,8 +24,8 @@
         <a href="#contact" class="link">Kontakt</a>
       </li>
     </ul>
-    <div ref="bottom" class="bottom-contact">
-      <div class="socials">
+    <div ref="bottom" class="bottom-contact f-col f-center">
+      <div class="socials flex f-row f-center">
         <a href="https://www.facebook.com/MebleNaWymiarAgmar" target="_blank"
           ><icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24"
         /></a>
@@ -36,12 +36,12 @@
           ><icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24"
         /></a>
       </div>
-      <div class="contact-row">
-        <a class="button" href="tel:698088271">Telefon</a>
-        <a class="button" href="mailto: meble@agmar.pl">Email</a>
+      <div class="contact-row flex f-row">
+        <a class="button flex f-center" href="tel:698088271">Telefon</a>
+        <a class="button flex f-center" href="mailto: meble@agmar.pl">Email</a>
       </div>
     </div>
-    <button ref="hamBtn" @click="changeState" class="hamButton">
+    <button ref="hamBtn" @click="changeState" class="hamButton flex">
       <div class="line"></div>
       <div class="line"></div>
       <div class="line"></div>
@@ -162,10 +162,7 @@ export default {
   text-decoration: none;
 }
 .main-navigation {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
   padding: 48px 36px 0;
   width: 100%;
   position: fixed;
@@ -173,10 +170,6 @@ export default {
   z-index: 10;
 }
 .logo {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   color: white;
   z-index: 999;
   .small {
@@ -189,7 +182,6 @@ export default {
 .hamButton {
   background: none;
   border: none;
-  display: flex;
   align-items: flex-end;
   flex-direction: column;
   z-index: 999;
@@ -210,7 +202,6 @@ export default {
   list-style-type: none;
   display: none;
   opacity: 0;
-  flex-direction: row;
   font-size: 48px;
   flex-direction: column;
   width: 100%;
@@ -233,27 +224,18 @@ export default {
 }
 .bottom-contact {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
 }
 .socials {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 36px;
   svg {
     margin: 0 18px;
   }
 }
 .contact-row {
-  display: flex;
-  flex-direction: row;
   border-top: 1px solid #393c46;
   width: 100%;
   .button {
@@ -264,9 +246,6 @@ export default {
     font-size: 24px;
     color: white;
     text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: 200;
     &:nth-child(1) {
       border-right: 1px solid #393c46;
