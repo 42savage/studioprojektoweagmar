@@ -7,7 +7,7 @@
       @mousemove="passPosition"
     >
       <hover :isMouseOn="mouse" />
-      <client-only>
+      <client-only v-if="screenSize > 1024">
         <carousel
           id="gallery"
           :perPage="2"
@@ -20,7 +20,24 @@
             :key="index"
             class="singleRealisation"
           >
-            <!-- <img :src="require(`@/assets/${image.src}`)" :alt="image.alt" /> -->
+            <img :src="`/${image.src}`" :alt="image.alt" />
+          </slide>
+        </carousel>
+      </client-only>
+
+      <client-only v-else>
+        <carousel
+          id="gallery"
+          :perPage="1"
+          :loop="true"
+          :paginationEnabled="false"
+          :navigationEnabled="false"
+        >
+          <slide
+            v-for="(image, index) in images"
+            :key="index"
+            class="singleRealisation"
+          >
             <img :src="`/${image.src}`" :alt="image.alt" />
           </slide>
         </carousel>
@@ -60,6 +77,7 @@ export default {
         posX: 0,
         posY: 0,
       },
+      screenSize: 0,
     };
   },
   methods: {
@@ -67,6 +85,12 @@ export default {
       this.mouse.posX = e.clientX;
       this.mouse.posY = e.clientY;
     },
+    checkScreen() {
+      this.screenSize = window.innerWidth;
+    },
+  },
+  mounted() {
+    this.checkScreen();
   },
 };
 </script>
@@ -76,7 +100,7 @@ export default {
   backface-visibility: hidden;
   position: relative;
   overflow: hidden;
-  // cursor: none;
+  cursor: none;
 }
 .singleRealisation {
   width: 100%;
@@ -102,8 +126,7 @@ export default {
   padding: 0 36px;
 }
 #gallery {
-  margin-left: 120px;
-  margin-right: 120px;
+  padding: 0 36px;
 }
 @media (min-width: 1024px) {
   .nav {

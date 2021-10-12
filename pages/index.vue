@@ -1,27 +1,5 @@
 <template>
-  <div class="container">
-    <!-- <header class="slider">
-      <div class="inner">
-        <div v-for="slide in slides" :key="slide.id" ref="slider">
-          <singleSlide
-            :image="slide.image"
-            :title="slide.title"
-            :subTitle="slide.subTitle"
-            :text="slide.text"
-            :route="slide.route"
-          />
-        </div>
-      </div>
-      <div class="slider-navigation">
-        <div class="counter">
-          <p>0{{ currSlide }} / 0{{ slides.length }}</p>
-        </div>
-        <div class="controls">
-          <button @click="prevSlide"><icons-arrow /></button>
-          <button @click="nextSlide"><icons-arrow /></button>
-        </div>
-      </div>
-    </header> -->
+  <div ref="container" class="container">
     <carousel-slider />
     <big-picture-slider />
     <section id="offer" class="offer">
@@ -73,14 +51,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import bigPictureSlider from '~/components/big-picture-slider.vue'
+import { mapGetters } from 'vuex';
+import bigPictureSlider from '~/components/big-picture-slider.vue';
 export default {
   components: { bigPictureSlider },
   data() {
     return {
       currSlide: 1,
-    }
+    };
   },
   computed: {
     ...mapGetters({
@@ -90,14 +68,22 @@ export default {
   },
   methods: {
     prevSlide() {
-      this.tl.reverse()
+      this.tl.reverse();
     },
     nextSlide() {
-      this.tl.play()
+      this.tl.play();
     },
   },
-  mounted() {},
-}
+  transition: {
+    enter(e) {
+      this.$gsap.from(e, {
+        y: -100,
+        opacity: 0,
+        duration: 0.6,
+      });
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 .inner {

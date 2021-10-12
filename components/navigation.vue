@@ -1,7 +1,7 @@
 <template>
   <nav
     v-if="this.$route.name === 'index'"
-    class="main-navigation flex f-center f-row"
+    class="main-navigation"
     v-scroll-lock="state"
   >
     <nuxt-link class="homeBtn" to="/">
@@ -67,7 +67,7 @@ export default {
     return {
       state: false,
       tl: this.$gsap.timeline({ paused: true }),
-    }
+    };
   },
   methods: {
     changeState(e) {
@@ -76,39 +76,39 @@ export default {
         // If users is on index page and scrolled at least 800px down scoll top
         // If menu is opened close menu and set state to false because of body overflow locked
         if (e === 'logo') {
-          this.tl.reverse()
-          this.state = false
+          this.tl.reverse();
+          this.state = false;
           if (
             this.state === false &&
             this.$route.name === 'index' &&
             window.scrollY > 800
           ) {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
           // if click comes from natural menu button on menu link just play/reverse menu animation
         } else {
-          this.state = !this.state
+          this.state = !this.state;
           if (this.state) {
-            this.tl.play()
+            this.tl.play();
           } else {
-            this.tl.reverse()
+            this.tl.reverse();
           }
         }
       }
     },
   },
   mounted() {
-    console.log(this.$route)
+    console.log(this.$route);
     if (
       window.matchMedia('(max-width: 620px)').matches &&
       // powoduje blad gdy wejdzie sie w jakas sekcjew i wroci z powrotem menu nie chce sie otwrozyc
       this.$route.name === 'index'
     ) {
-      const tl = this.tl
+      const tl = this.tl;
       tl.to([this.$refs.bottom, this.$refs.list], {
         display: 'flex',
         opacity: 1,
-      })
+      });
       tl.from(this.$refs.list.children, {
         x: 200,
         opacity: 0,
@@ -148,20 +148,19 @@ export default {
             visibility: 'hidden',
           },
           '50%-=menu'
-        )
+        );
     }
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
 .homeBtn {
   z-index: 99;
-}
-.homeBtn {
   text-decoration: none;
 }
 .main-navigation {
+  display: flex;
   justify-content: space-between;
   padding: 48px 36px 0;
   width: 100%;
@@ -322,6 +321,8 @@ export default {
   .main-navigation {
     display: flex;
     flex-direction: row;
+    // justify-content: center;
+    align-items: center;
   }
 }
 </style>

@@ -6,6 +6,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      correction: 950,
+    };
+  },
   props: {
     isMouseOn: {
       type: Object,
@@ -20,7 +25,7 @@ export default {
     handleMouseMove(x, y) {
       let cursor = this.$refs.cursor;
       this.$gsap.to(cursor, {
-        x: x - 950,
+        x: x - this.correction,
         y: y,
       });
       if (this.isMouseOn.state === false) {
@@ -70,10 +75,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #393c46;
+    background: #111422;
   }
   .text {
-    color: rgb(63, 63, 63);
+    color: rgb(12, 8, 8);
     &:after {
       content: ' >';
     }

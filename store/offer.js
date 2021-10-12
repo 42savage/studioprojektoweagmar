@@ -93,13 +93,13 @@ export const state = () => ({
       id: 1,
       contains: ['projekt-wykonawczy'],
       text: 'Projekt wykonawczy to projekt, w którym klient jest już od początku zdecydowany na aranżację kuchni. Do każdego projektu podchodzimy indywidualnie, umożliwiamy klientom możliwość dopięcia każdego szczegółu w projekcie.',
-      images: ['pw1', 'pw2', 'pw3', 'pw4'],
+      images: ['pw1', 'pw2', 'pw3'],
     },
     {
       id: 2,
       contains: ['projekt-kuchni'],
       text: 'Projekt skupiony wyłącznie na kuchni. Klient do wyboru ma systemu jakie mają być zastosowane w poszczególnych szafkach czy też układy szuflad.',
-      images: ['pk1', 'pk2', 'pk3', 'pk4'],
+      images: ['pk1', 'pk2', 'pk3'],
     },
   ],
 });
