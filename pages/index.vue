@@ -1,5 +1,6 @@
 <template>
   <div ref="container" class="container" asscroll-container>
+    <subTransmision />
     <carousel-slider />
     <big-picture-slider />
     <section id="offer" class="offer">
@@ -58,6 +59,7 @@ export default {
   data() {
     return {
       currSlide: 1,
+      test: false,
     };
   },
   computed: {
@@ -76,11 +78,7 @@ export default {
   },
   transition: {
     enter(e) {
-      this.$gsap.from(e, {
-        y: -100,
-        opacity: 0,
-        duration: 0.6,
-      });
+      this.test = true;
     },
   },
 };

@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <subTransmision />
     <div
       class="heading"
       :style="{
@@ -67,6 +68,11 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
+  data() {
+    return {
+      test: true,
+    };
+  },
   computed: {
     ...mapGetters({
       offerOptions: 'offer/offerOptions',
@@ -80,6 +86,11 @@ export default {
       setActive: 'offer/setActive',
       setNotActive: 'offer/setNotActive',
     }),
+  },
+  transition: {
+    enter(e) {
+      this.test = true;
+    },
   },
   mounted() {
     this.setActive(this.specifiedOptions);

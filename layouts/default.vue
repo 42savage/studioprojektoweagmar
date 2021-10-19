@@ -1,7 +1,6 @@
 <template>
   <div>
     <entryTransition />
-    <loader />
     <navigation />
     <div ref="container">
       <left-bar />
@@ -12,6 +11,11 @@
 <script>
 export default {
   mounted() {},
+  transition: {
+    afterLeave(el) {
+      console.log('afterLeave', el);
+    },
+  },
 };
 </script>
 <style>

@@ -1,14 +1,8 @@
 <template>
-  <div class="container" ref="container" v-scroll-lock="showLoader">
-    <div ref="logo" class="logo">
-      <h1>Studio projektowe</h1>
-      <h2>AGMAR</h2>
-    </div>
-    <div class="wrapper" ref="stripes">
-      <div class="stripe"></div>
-      <div class="stripe"></div>
-      <div class="stripe"></div>
-    </div>
+  <div class="wrapper" ref="stripes" v-scroll-lock="showLoader">
+    <div class="stripe"></div>
+    <div class="stripe"></div>
+    <div class="stripe"></div>
   </div>
 </template>
 
@@ -22,26 +16,21 @@ export default {
   mounted() {
     const tl = this.$gsap.timeline();
     const elements = this.$gsap.utils.toArray(this.$refs.stripes.children);
-    tl.to(this.$refs.logo, {
-      opacity: 0,
-      duration: 3,
-    })
-      .to(elements, {
-        xPercent: 100,
-        stagger: 0.4,
-        duration: 2,
-        ease: 'power1.in',
-      })
-      .to(this.$refs.container, {
-        display: 'none',
-        onComplete: () => (this.showLoader = false),
-      });
+    tl.to(elements, {
+      xPercent: 100,
+      stagger: 0.4,
+      duration: 1,
+      ease: 'power1.in',
+    }).to(this.$refs.stripes, {
+      display: 'none',
+      onComplete: () => (this.showLoader = false),
+    });
   },
 };
 </script>
 
 <style scoped lang="scss">
-.container {
+.wrapper {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -49,10 +38,6 @@ export default {
   left: 0;
   z-index: 999;
   overflow: hidden;
-}
-.wrapper {
-  width: 100%;
-  height: 100%;
 }
 .stripe {
   width: 100%;
