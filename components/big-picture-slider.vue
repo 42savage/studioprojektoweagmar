@@ -23,26 +23,35 @@
         <div class="single-image">
           <img src="r1.jpg" alt="Image" />
         </div>
-        <div class="custom-slider f-row f-center">
-          <img src="custom-slider/fit1.jpg" alt="image" />
-          <img src="custom-slider/fit2.jpg" alt="image" />
-          <img src="custom-slider/fit3.jpg" alt="image" />
-          <img src="custom-slider/fit4.jpg" alt="image" />
+        <div class="custom-slider f-row f-center" ref="slider">
+          <div
+            v-for="slides in slides[this.currentSet].setOfImages"
+            :key="slides.id"
+            class="single-slide"
+          >
+            <div class="stripe"></div>
+            <img
+              :src="require(`/assets/custom-slider/${slides.src}.jpg`)"
+              alt="Zdjęcie podzielone na 4 części, przedstawia kuchnie"
+            />
+          </div>
         </div>
       </div>
     </div>
     <div class="navigation flex f-row">
       <div class="counter flex f-center f-row">
-        <p class="count">01</p>
-        <div class="line"></div>
-        <p class="name">Apartament "Bekas"</p>
+        <p ref="count" class="count">0{{ currentSet + 1 }}</p>
+        <div ref="line" class="line"></div>
+        <p ref="countertitle" class="name">{{ slides[currentSet].title }}</p>
       </div>
       <div class="arrows flex f-center f-row">
-        <button>
-          <icons-arrow :fill="'#565656'" />
+        <button @click="playAnim('prev')">
+          <icons-arrow v-if="this.currentSet === 0" :fill="'#2c2c2c'" />
+          <icons-arrow v-else :fill="'#565656'" />
         </button>
-        <button>
-          <icons-arrow :fill="'#565656'" />
+        <button @click="playAnim('next')">
+          <icons-arrow v-if="this.currentSet === 1" :fill="'#2c2c2c'" />
+          <icons-arrow v-else :fill="'#565656'" />
         </button>
       </div>
     </div>
@@ -50,10 +59,169 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      autoPlayState: true,
+      currentSet: 0,
+      slides: [
+        {
+          id: 0,
+          setOfImages: [
+            {
+              id: 0,
+              src: 'fit1',
+            },
+            {
+              id: 1,
+              src: 'fit2',
+            },
+            {
+              id: 2,
+              src: 'fit3',
+            },
+            {
+              id: 3,
+              src: 'fit4',
+            },
+          ],
+          title: 'Apartament "Bekas"',
+        },
+        {
+          id: 0,
+          setOfImages: [
+            {
+              id: 0,
+              src: 'fat1',
+            },
+            {
+              id: 1,
+              src: 'fat2',
+            },
+            {
+              id: 2,
+              src: 'fat3',
+            },
+            {
+              id: 3,
+              src: 'fat4',
+            },
+          ],
+          title: 'Apartament "Borubar"',
+        },
+      ],
+    };
+  },
+  methods: {
+    initSlider() {
+      this.tl = this.$gsap.timeline();
+    },
+    autoPlay() {
+      if (this.autoPlayState) {
+        this.tl.play();
+      } else {
+        this.tl.pause();
+      }
+    },
+    changeSet(direction) {
+      console.log(direction);
+      if (this.currentSet < this.slides.length - 1 && direction === 'next') {
+        this.currentSet += 1;
+      } else if (this.currentSet > 0 && direction === 'prev') {
+        this.currentSet -= 1;
+      }
+    },
+    playAnim(direction) {
+      if (direction === 'next' && this.currentSet < this.slides.length - 1) {
+        this.tl.fromTo(
+          '.stripe',
+          {
+            display: 'none',
+            yPercent: -100,
+          },
+          {
+            opacity: 1,
+            display: 'block',
+            yPercent: 100,
+            duration: 2,
+            stagger: 0.05,
+            onStart: () => {
+              setTimeout(() => {
+                this.changeSet(direction);
+              }, 630);
+            },
+            onComplete: () => {
+              this.tl.kill;
+            },
+          }
+        );
+      } else if (direction === 'prev') {
+        this.tl.fromTo(
+          '.stripe',
+          {
+            display: 'none',
+            yPercent: 100,
+          },
+          {
+            opacity: 1,
+            display: 'block',
+            yPercent: -100,
+            duration: 2,
+            stagger: -0.05,
+            onStart: () => {
+              setTimeout(() => {
+                this.changeSet(direction);
+              }, 650);
+            },
+            onComplete: () => {
+              this.tl.kill;
+            },
+          }
+        );
+      }
+    },
+  },
+  watch: {
+    currentSet: function (s) {
+      this.$gsap.fromTo(
+        [this.$refs.countertitle, this.$refs.count],
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+        }
+      );
+      this.$gsap.fromTo(
+        this.$refs.line,
+        {
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+        }
+      );
+    },
+  },
+  mounted() {
+    this.initSlider();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+.stripe {
+  width: 100%;
+  height: 100%;
+  background: #282d33;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  display: none;
+}
 .slider {
   width: 100%;
 }
@@ -140,6 +308,7 @@ export default {};
   button {
     background: none;
     border: none;
+    cursor: pointer;
     margin: 0 18px;
     &:nth-child(2) {
       transform: rotate(180deg);
@@ -162,9 +331,15 @@ export default {};
 }
 .custom-slider {
   display: none;
-  img {
+  .single-slide {
+    overflow: hidden;
+    position: relative;
     width: 160px;
     margin: 0 8px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 @media (min-width: 1024px) {

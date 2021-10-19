@@ -2,7 +2,7 @@
   <div>
     <loader />
     <navigation />
-    <div ref="mainContainer">
+    <div ref="container">
       <left-bar />
       <Nuxt />
     </div>
@@ -10,7 +10,6 @@
 </template>
 <script>
 export default {
-  methods: {},
   mounted() {},
 };
 </script>

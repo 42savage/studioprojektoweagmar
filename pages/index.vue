@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="container">
+  <div ref="container" class="container" asscroll-container>
     <carousel-slider />
     <big-picture-slider />
     <section id="offer" class="offer">
