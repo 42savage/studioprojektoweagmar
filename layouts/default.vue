@@ -6,7 +6,6 @@
       <left-bar />
       <Nuxt />
     </div>
-    <theFooter />
   </div>
 </template>
 <script>

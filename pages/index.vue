@@ -45,6 +45,7 @@
       />
       <contactForm />
     </section>
+    <TheFooter />
   </div>
 </template>
 

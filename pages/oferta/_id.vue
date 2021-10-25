@@ -63,6 +63,7 @@
         </carousel>
       </client-only>
     </div>
+    <theFooter />
   </div>
 </template>
 
