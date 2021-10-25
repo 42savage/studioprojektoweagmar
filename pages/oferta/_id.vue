@@ -44,12 +44,13 @@
       </div>
     </div>
     <div class="description">
-      <h1>Description goes here!</h1>
-      <p>{{ specifiedOfferContent[0].text }}</p>
+      <p class="title">Kilka słów o oferowanym projekcie</p>
+      <p class="text">{{ specifiedOfferContent[0].text }}</p>
       <client-only>
+        <p class="title">Przykładowe projekty:</p>
         <carousel
-          :perPage="1"
-          :loop="true"
+          :perPage="basedOnScreenSize"
+          :loop="false"
           :paginationEnabled="false"
           :navigationEnabled="false"
         >
@@ -71,6 +72,7 @@ export default {
   data() {
     return {
       test: true,
+      basedOnScreenSize: 1,
     };
   },
   computed: {
@@ -94,6 +96,10 @@ export default {
   },
   mounted() {
     this.setActive(this.specifiedOptions);
+    console.log(window.innerHeight);
+    if (window.innerWidth > 1023) {
+      this.basedOnScreenSize = 2;
+    }
   },
   beforeDestroy() {
     this.setNotActive();
@@ -127,7 +133,37 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+.description {
+  padding: 0 36px;
+}
+.title {
+  color: #929292;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.text {
+  color: #929292;
+}
+.VueCarousel-wrapper {
+  img {
+    width: 300px;
+  }
+}
 @media (min-width: 1024px) {
+  .VueCarousel-wrapper {
+    img {
+      width: 600px;
+    }
+  }
+  .VueCarousel-slide {
+    flex-shrink: initial !important;
+    margin: 0 18px;
+  }
+  .description {
+    padding: 0 120px;
+    margin-top: 36px;
+  }
   .container {
     padding: 0 120px;
   }
@@ -136,6 +172,10 @@ export default {
     div {
       margin: 0 3px;
     }
+  }
+  .text {
+    width: 400px;
+    margin-bottom: 36px;
   }
 }
 </style>

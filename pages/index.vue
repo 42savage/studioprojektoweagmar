@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="container" asscroll-container>
+  <div ref="container" class="container">
     <subTransmision />
     <carousel-slider />
     <big-picture-slider />
@@ -45,9 +45,6 @@
       />
       <contactForm />
     </section>
-    <footer>
-      <p class="author">Copryright <span>Strony internetowe Radom</span></p>
-    </footer>
   </div>
 </template>
 
@@ -81,9 +78,14 @@ export default {
       this.test = true;
     },
   },
+  mounted() {},
 };
 </script>
 <style scoped lang="scss">
+.container {
+  max-width: 100vw;
+  max-height: 100vh;
+}
 .inner {
   display: flex;
   flex-direction: row;
@@ -123,16 +125,6 @@ export default {
 .entryText {
   color: white;
   padding: 36px;
-}
-.author {
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  width: 100%;
-  margin: 30px 0;
-  span {
-    color: #00d1ff;
-  }
 }
 @media (min-width: 1024px) {
   .offerList {

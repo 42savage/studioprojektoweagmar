@@ -1,22 +1,16 @@
 <template>
-  <div>
+  <div ref="container">
     <entryTransition />
     <navigation />
-    <div ref="container">
+    <div>
       <left-bar />
       <Nuxt />
     </div>
+    <theFooter />
   </div>
 </template>
 <script>
-export default {
-  mounted() {},
-  transition: {
-    afterLeave(el) {
-      console.log('afterLeave', el);
-    },
-  },
-};
+export default {};
 </script>
 <style>
 * {

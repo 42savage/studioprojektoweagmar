@@ -334,7 +334,7 @@ export default {
   .single-slide {
     overflow: hidden;
     position: relative;
-    width: 160px;
+    // width: 160px;
     margin: 0 8px;
     img {
       width: 100%;

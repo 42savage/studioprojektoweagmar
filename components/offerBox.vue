@@ -8,7 +8,7 @@
     <p class="content">
       {{ text }}
     </p>
-    <nuxt-link :to="`offer/${route}`" class="reach"
+    <nuxt-link :to="`oferta/${route}`" class="reach"
       >Dowiedz się więcej</nuxt-link
     >
   </div>

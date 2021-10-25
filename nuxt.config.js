@@ -45,7 +45,7 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/sitemap'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -54,5 +54,15 @@ export default {
   server: {
     port: process.env.PORT || 8000, // default: 3000
     host: '0.0.0.0', // default: localhost
+  },
+  sitemap: {
+    hostname: process.env.BASE_URL,
+    gzip: true,
+    exclude: ['/admin/**'],
+    routes: [
+      '/oferta/projekt-koncepcyjny',
+      '/oferta/projekt-wykonawczy',
+      '/oferta/projekt-kuchni',
+    ],
   },
 };
