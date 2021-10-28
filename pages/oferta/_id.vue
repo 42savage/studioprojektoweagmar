@@ -70,6 +70,18 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
+  head() {
+    return {
+      title: this.specifiedOffer.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.specifiedOffer.seoDesc,
+        },
+      ],
+    };
+  },
   data() {
     return {
       test: true,

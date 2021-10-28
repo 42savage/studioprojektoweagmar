@@ -12,7 +12,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Zajmujemy się tworzeniem wysokiej jakości wizualizacji 3D kuchni i innych pomieszczeń mieszkalnych.',
+          'Zajmujemy się tworzeniem wysokiej jakości wizualizacji 3D kuchni i innych pomieszczeń mieszkalnych. Nie czekaj, skontaktuj się z nami jak najszybciej!',
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],

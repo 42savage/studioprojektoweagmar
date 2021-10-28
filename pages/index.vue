@@ -31,7 +31,7 @@
       <p class="entryText">
         Do każdej realizacji podchodzimy indywidualnie. Nasze projekty to nie
         tylko sucha wizualizacja ale także propozycje układów funkcyjnych czy
-        układy szuflad w szafach.
+        układy szuflad w szafach, a nawet rozkłady gniazdek w pomieszczeniach.
       </p>
       <realisationGallery />
     </section>
@@ -43,6 +43,12 @@
         :subtitleSize="30"
         :bottomMargin="0"
       />
+      <p class="entryText">
+        Skontaktuj się z nami za pomocą poniższego formularza kontaktowego,
+        ewentualnie skontaktuj się bezpośrednio pisząc na podanego maila, bądz
+        dzwoniąc na podany numer. Mamy również facebooka, na którego serdecznie
+        zapraszamy. (1 ikonka w lewym górnym rogu)
+      </p>
       <contactForm />
     </section>
     <TheFooter />

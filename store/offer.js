@@ -5,6 +5,8 @@ export const state = () => ({
       backgroundURI: 's3',
       name: 'projekt-koncepcyjny',
       title: 'Projekt koncepcyjny',
+      seoDesc:
+        '⭐Projekt, który z pewnością pomoże Ci wyobrazić sobie jak może wyglądać Twój wymarzony salon, kuchnia, sypialnia czy nawet całe mieszkanie.⭐',
       content: 'W skład projektu koncepcyjnego wchodzą następujące usługi:',
       list: [
         'Inwentaryzacja pomieszczeń',
@@ -18,6 +20,8 @@ export const state = () => ({
       backgroundURI: 's1',
       name: 'projekt-wykonawczy',
       title: 'Projekt wykonawczy',
+      seoDesc:
+        '⭐Projekt, który jak sama nazwa sugeruje, charakteryzuje się tym, że najpierw pomaga Ci wyobrazić sobie przyszłe pomieszczenie, a następnie wdrażany jest w życie⭐',
       content: 'Indywidualny projekt w skład którego wchodzi:',
       list: [
         'Inwentaryzacja pomieszczeń',
@@ -32,6 +36,8 @@ export const state = () => ({
       backgroundURI: 's2',
       name: 'projekt-kuchni',
       title: 'Projekt kuchni',
+      seoDesc:
+        '⭐Projekt samej kuchni, który wykonywany jest nawet u klienta, pomaga wyobrazić sobie kuchnie. Do wyboru zastosowane systemy oraz rozmieszczenie gniazdek⭐',
       content: 'Indywidualny projekt w skład którego wchodzi:',
       list: ['Pierwszy punkt', 'drugi punkt', 'trzeci punkt', 'czwarty punkt'],
       text: 'Zarówno jak projekt koncepcyjny, projekt kuchni jesteśmy w stanie wykonać u klienta. Wizualizacja już podczas pomiaru znacznie pomaga wyobraźić sobie przyszłą kuchnie.',
