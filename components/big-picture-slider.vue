@@ -116,13 +116,6 @@ export default {
     initSlider() {
       this.tl = this.$gsap.timeline();
     },
-    autoPlay() {
-      if (this.autoPlayState) {
-        this.tl.play();
-      } else {
-        this.tl.pause();
-      }
-    },
     changeSet(direction) {
       console.log(direction);
       if (this.currentSet < this.slides.length - 1 && direction === 'next') {
@@ -155,7 +148,7 @@ export default {
             },
           }
         );
-      } else if (direction === 'prev') {
+      } else if (direction === 'prev' && this.currentSet != 0) {
         this.tl.fromTo(
           '.stripe',
           {
@@ -303,6 +296,7 @@ export default {
   width: 100%;
   margin-bottom: 36px;
   margin-top: 18px;
+  display: none;
 }
 .arrows {
   button {
@@ -351,6 +345,9 @@ export default {
   }
 }
 @media (min-width: 1440px) {
+  .navigation {
+    display: flex;
+  }
   .single-image {
     display: none;
   }
