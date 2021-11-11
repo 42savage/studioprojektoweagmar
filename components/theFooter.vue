@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p class="author">Copryright <span>Strony internetowe Radom</span></p>
+    <p class="author">Projekt i realizacja <span>SAVAGE AGENCY</span></p>
     <p class="materials" @click="state = !state">Materiały użyte na stronie</p>
     <div class="modal" v-if="state">
       <p class="title">Materiały użyte na stronie.</p>
@@ -87,7 +87,7 @@ footer {
   width: 100%;
   margin: 30px 0;
   span {
-    color: #00d1ff;
+    color: crimson;
   }
 }
 .materials {

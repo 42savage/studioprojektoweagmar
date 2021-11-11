@@ -1,6 +1,6 @@
 <template>
   <div ref="container" class="container">
-    <subTransmision />
+    <!-- <subTransmision /> -->
     <carousel-slider />
     <big-picture-slider />
     <section id="offer" class="offer">
@@ -44,10 +44,10 @@
         :bottomMargin="0"
       />
       <p class="entryText">
-        Skontaktuj się z nami za pomocą poniższego formularza kontaktowego,
-        ewentualnie skontaktuj się bezpośrednio pisząc na podanego maila, bądz
-        dzwoniąc na podany numer. Mamy również facebooka, na którego serdecznie
-        zapraszamy. (1 ikonka w lewym górnym rogu)
+        Możesz skontaktować się z nami za pomocą wygodnej dla Ciebie formy.
+        Skorzystaj z wbudowanego w strone formularza e-mail. Chyba, że
+        interesuje cie bardziej bezpośrednia komunikacja, wtedy wybierz numer
+        wyświetlająćy się na lewej stronie ekranu.
       </p>
       <contactForm />
     </section>

@@ -22,7 +22,7 @@
       <button class="submit">Wyślij wiadomość</button>
     </form>
     <div class="contact flex f-col">
-      <p class="title">Skontaktuj się z nami bezpośrednio</p>
+      <p class="title">Znajdziesz nas</p>
       <div>
         <p>Adres:</p>
         <p>26-640 Skaryszew</p>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style lang="scss" scoped>

@@ -34,7 +34,7 @@ export default {
   plugins: [
     { src: '~/plugins/gsap.js' },
     { src: '~/plugins/scrollLock.js', mode: 'client' },
-    { src: '~/plugins/vue-carousel.js', mode: 'client', ssr: false },
+    { src: '~/plugins/flicking.js', mode: 'client', ssr: false },
     { src: '~/plugins/vuex-sync' },
   ],
 

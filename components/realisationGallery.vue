@@ -1,56 +1,18 @@
 <template>
-  <div>
-    <div
-      class="wrapper flex f-center f-row"
-      @mouseenter="mouse.state = true"
-      @mouseleave="mouse.state = false"
-      @mousemove="passPosition"
-    >
-      <hover :isMouseOn="mouse" />
-      <client-only v-if="screenSize > 1024">
-        <carousel
-          id="gallery"
-          :perPage="2"
-          :loop="true"
-          :paginationEnabled="false"
-          :navigationEnabled="false"
-        >
-          <slide
-            v-for="(image, index) in images"
-            :key="index"
-            class="singleRealisation"
-          >
-            <img :src="`/${image.src}`" :alt="image.alt" />
-          </slide>
-        </carousel>
-      </client-only>
-
-      <client-only v-else>
-        <carousel
-          id="gallery"
-          :perPage="1"
-          :loop="true"
-          :paginationEnabled="false"
-          :navigationEnabled="false"
-        >
-          <slide
-            v-for="(image, index) in images"
-            :key="index"
-            class="singleRealisation"
-          >
-            <img :src="`/${image.src}`" :alt="image.alt" />
-          </slide>
-        </carousel>
-      </client-only>
-    </div>
-    <div class="nav flex">
-      <button class="navItem">
-        <icons-smallArrow />
-      </button>
-      <button class="navItem">
-        <icons-smallArrow />
-      </button>
-    </div>
+  <div class="wrapper">
+    <client-only>
+      <Flicking
+        :hideBeforeInit="true"
+        :options="{ align: 'center', circular: true }"
+      >
+        <div
+          v-for="image in images"
+          class="singleRealisation"
+          :key="image.id"
+          :style="{ backgroundImage: `url(${image.src})` }"
+        ></div>
+      </Flicking>
+    </client-only>
   </div>
 </template>
 
@@ -60,77 +22,57 @@ export default {
     return {
       images: [
         {
+          id: 0,
           alt: 'Na fotografii widoczna jest łazienka w modernistycznym stylu',
           src: 'r1.jpg',
         },
         {
+          id: 1,
           alt: 'Na fotografii widoczny jest salon w ciemnej zabudowie',
           src: 'r2.jpg',
         },
         {
+          id: 2,
           alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
           src: 'r3.jpg',
         },
       ],
-      mouse: {
-        state: false,
-        posX: 0,
-        posY: 0,
-      },
-      screenSize: 0,
     };
-  },
-  methods: {
-    passPosition(e) {
-      this.mouse.posX = e.clientX;
-      this.mouse.posY = e.clientY;
-    },
-    checkScreen() {
-      this.screenSize = window.innerWidth;
-    },
-  },
-  mounted() {
-    this.checkScreen();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  backface-visibility: hidden;
-  position: relative;
-  overflow: hidden;
-  cursor: none;
+.flicking-viewport {
+  padding: 0 36px;
 }
 .singleRealisation {
   width: 100%;
-  flex-shrink: 0;
-  img {
-    width: 100%;
-    height: 480px;
-    object-fit: cover;
-    padding: 12px;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  margin: 0 12px;
+}
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 0 36px;
+    overflow: hidden;
   }
-}
-.navItem {
-  background: none;
-  border: none;
-  &:nth-child(2) svg {
-    transform: rotate(180deg);
-    margin: 0 24px;
+  .flicking-viewport {
+    padding: initial;
   }
-}
-.nav {
-  width: 100%;
-  justify-content: flex-end;
-  padding: 0 36px;
-}
-#gallery {
-  padding: 0 36px;
+  .singleRealisation {
+    width: 50%;
+    overflow: hidden;
+  }
 }
 @media (min-width: 1024px) {
-  .nav {
-    display: none;
+  .wrapper {
+    padding: 0 120px;
+  }
+  .singleRealisation {
+    width: 600px;
+    height: 400px;
   }
 }
 </style>

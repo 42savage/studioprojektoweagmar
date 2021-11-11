@@ -1,13 +1,11 @@
 <template>
   <client-only>
-    <carousel
+    <Flicking
       id="carousel"
-      :perPage="1"
-      :loop="true"
-      :paginationEnabled="false"
-      :navigationEnabled="false"
+      :hideBeforeInit="true"
+      :options="{ align: 'center', circular: true }"
     >
-      <slide v-for="slide in slides" :key="slide.id">
+      <div v-for="slide in slides" :key="slide.id">
         <singleSlide
           :image="slide.image"
           :title="slide.title"
@@ -15,24 +13,23 @@
           :text="slide.text"
           :route="slide.route"
         />
-      </slide>
-    </carousel>
+      </div>
+    </Flicking>
   </client-only>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 export default {
   computed: {
     ...mapGetters({
       slides: 'slider/slides',
     }),
   },
-}
+};
 </script>
 
 <style lang="scss">
-// repair css
 #carousel {
   display: none;
   width: 100%;

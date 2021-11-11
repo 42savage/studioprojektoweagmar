@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <subTransmision />
+    <!-- <subTransmision /> -->
     <div
       class="heading"
       :style="{
@@ -48,19 +48,20 @@
       <p class="text">{{ specifiedOfferContent[0].text }}</p>
       <client-only>
         <p class="title">Przykładowe projekty:</p>
-        <carousel
-          :perPage="basedOnScreenSize"
-          :loop="false"
-          :paginationEnabled="false"
-          :navigationEnabled="false"
+        <Flicking
+          :hideBeforeInit="true"
+          :options="{ align: 'center', circular: true }"
         >
-          <slide
+          <div
             v-for="image in specifiedOfferContent[0].images"
+            class="singleRealisation"
             :key="image.id"
-          >
-            <img :src="require(`~/assets/offer/${image}.jpg`)" />
-          </slide>
-        </carousel>
+            :style="{
+              'background-image':
+                'url(' + require(`@/assets/offer/${image}.jpg`) + ')',
+            }"
+          ></div>
+        </Flicking>
       </client-only>
     </div>
     <theFooter />
@@ -85,7 +86,6 @@ export default {
   data() {
     return {
       test: true,
-      basedOnScreenSize: 1,
     };
   },
   computed: {
@@ -109,10 +109,6 @@ export default {
   },
   mounted() {
     this.setActive(this.specifiedOptions);
-    console.log(window.innerHeight);
-    if (window.innerWidth > 1023) {
-      this.basedOnScreenSize = 2;
-    }
   },
   beforeDestroy() {
     this.setNotActive();
@@ -121,6 +117,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.singleRealisation {
+  width: 100%;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+}
 .content {
   color: #929292;
   padding: 0 36px;
@@ -158,20 +160,12 @@ export default {
 .text {
   color: #929292;
 }
-.VueCarousel-wrapper {
-  img {
-    width: 300px;
-  }
-}
+
 @media (min-width: 1024px) {
-  .VueCarousel-wrapper {
-    img {
-      width: 600px;
-    }
-  }
-  .VueCarousel-slide {
-    flex-shrink: initial !important;
-    margin: 0 18px;
+  .singleRealisation {
+    width: 600px;
+    height: 400px;
+    margin: 12px;
   }
   .description {
     padding: 0 120px;
