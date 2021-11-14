@@ -71,6 +71,7 @@ export default {
   },
   methods: {
     changeState(e) {
+      console.log(window.matchMedia('max-width: 620').matches);
       if (window.matchMedia('(max-width: 620px)').matches) {
         // If user clicks on logo go back to homepage;
         // If users is on index page and scrolled at least 800px down scoll top
@@ -89,8 +90,10 @@ export default {
         } else {
           this.state = !this.state;
           if (this.state) {
+            console.log(this.state, 'state play');
             this.tl.play();
           } else {
+            console.log(this.state, 'state reverse');
             this.tl.reverse();
           }
         }

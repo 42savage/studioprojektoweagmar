@@ -345,6 +345,10 @@ export default {
   }
 }
 @media (min-width: 1440px) {
+  .text {
+    font-size: 32px;
+    width: 600px;
+  }
   .navigation {
     display: flex;
   }
@@ -359,6 +363,12 @@ export default {
     img {
       position: initial;
     }
+  }
+}
+@media (min-width: 1660px) {
+  .text {
+    font-size: 32px;
+    width: 800px;
   }
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
   <footer>
-    <p class="author">Projekt i realizacja <span>SAVAGE AGENCY</span></p>
+    <p class="author">
+      Projekt i realizacja <a href="https://savageagency.pl/">SAVAGE AGENCY</a>
+    </p>
     <p class="materials" @click="state = !state">Materiały użyte na stronie</p>
     <div class="modal" v-if="state">
       <p class="title">Materiały użyte na stronie.</p>
@@ -87,6 +89,14 @@ footer {
   width: 100%;
   margin: 30px 0;
   span {
+    color: crimson;
+  }
+  a:visited {
+    text-decoration: none;
+    color: crimson;
+  }
+  a:link {
+    text-decoration: none;
     color: crimson;
   }
 }
