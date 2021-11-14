@@ -9,10 +9,7 @@
       <p>Przeciągnij</p>
     </div>
     <client-only>
-      <Flicking
-        :hideBeforeInit="true"
-        :options="{ align: 'center', circular: true }"
-      >
+      <Flicking :options="{ align: 'center', circular: true }">
         <div
           v-for="image in images"
           class="singleRealisation"

@@ -1,10 +1,6 @@
 <template>
   <client-only>
-    <Flicking
-      id="carousel"
-      :hideBeforeInit="true"
-      :options="{ align: 'center', circular: true }"
-    >
+    <Flicking id="carousel" :options="{ align: 'center', circular: true }">
       <div v-for="slide in slides" :key="slide.id">
         <singleSlide
           :image="slide.image"
