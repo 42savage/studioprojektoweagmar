@@ -1,28 +1,26 @@
 <template>
-  <div class="hdn">
-    <client-only>
-      <Flicking
-        id="carousel"
-        :options="{
-          align: 'center',
-          circular: true,
-          autoInit: true,
-          horizontal: true,
-          preventEventsBeforeInit: true,
-        }"
-      >
-        <div v-for="slide in slides" :key="slide.id">
-          <singleSlide
-            :image="slide.image"
-            :title="slide.title"
-            :subTitle="slide.subTitle"
-            :text="slide.text"
-            :route="slide.route"
-          />
-        </div>
-      </Flicking>
-    </client-only>
-  </div>
+  <client-only>
+    <Flicking
+      id="carousel"
+      :options="{
+        align: 'center',
+        circular: true,
+        autoInit: true,
+        horizontal: true,
+        preventEventsBeforeInit: true,
+      }"
+    >
+      <singleSlide
+        v-for="slide in slides"
+        :key="slide.id"
+        :image="slide.image"
+        :title="slide.title"
+        :subTitle="slide.subTitle"
+        :text="slide.text"
+        :route="slide.route"
+      />
+    </Flicking>
+  </client-only>
 </template>
 
 <script>
@@ -37,12 +35,6 @@ export default {
 </script>
 
 <style lang="scss">
-.hdn {
-  overflow: hidden;
-}
-.flicking-camera {
-  display: flex !important;
-}
 #carousel {
   display: none;
   width: 100%;
