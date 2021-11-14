@@ -50,10 +50,13 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['gsap'],
+    extractCSS: {
+      ignoreOrder: false,
+    },
   },
   server: {
-    port: process.env.PORT || 8000, // default: 3000
-    host: '0.0.0.0', // default: localhost
+    port: process.env.PORT,
+    host: process.env.HOST,
   },
   sitemap: {
     hostname: process.env.BASE_URL,
