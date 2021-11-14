@@ -1,6 +1,6 @@
 <template>
   <div ref="container">
-    <!-- <entryTransition /> -->
+    <entryTransition />
     <navigation />
     <div>
       <left-bar />

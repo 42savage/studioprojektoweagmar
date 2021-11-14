@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <!-- <subTransmision /> -->
+    <subTransmision />
     <div
       class="heading"
       :style="{

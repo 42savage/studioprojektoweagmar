@@ -1,6 +1,6 @@
 <template>
   <div ref="container" class="container">
-    <!-- <subTransmision /> -->
+    <subTransmision />
     <carousel-slider />
     <big-picture-slider />
     <section id="offer" class="offer">
