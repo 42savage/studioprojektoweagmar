@@ -24,6 +24,11 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@egjs/flicking/dist/flicking.css',
+        crossorigin: 'anonymous',
+      },
     ],
   },
 
@@ -50,17 +55,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['gsap'],
-    loaders: {
-      vue: {
-        compilerOptions: {
-          // This option is highly recommended
-          preserveWhitespace: false,
-        },
-      },
-    },
-    extractCSS: {
-      ignoreOrder: false,
-    },
+    extractCSS: true,
   },
   server: {
     port: process.env.PORT,

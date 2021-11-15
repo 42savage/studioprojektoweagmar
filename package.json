@@ -10,8 +10,10 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@babel/core": "^7.16.0",
     "@egjs/vue-flicking": "^4.4.0",
     "@nuxtjs/sitemap": "^2.4.0",
+    "babel-loader": "^8.2.3",
     "core-js": "^3.15.1",
     "gsap": "^3.7.1",
     "node-sass": "^4.14.1",
