@@ -1,6 +1,6 @@
 <template>
   <div
-    class="wrapper hdn"
+    class="wrapper"
     @mousemove="moveCircle"
     @mouseleave="hideCircle"
     @mouseenter="showCircle"
@@ -66,12 +66,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hdn {
-  overflow: hidden;
-}
-.flicking-camera {
-  display: flex !important;
-}
 .circle {
   display: none;
 }
