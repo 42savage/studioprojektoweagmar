@@ -34,7 +34,7 @@ export default {
   plugins: [
     { src: '~/plugins/gsap.js' },
     { src: '~/plugins/scrollLock.js', mode: 'client' },
-    { src: '~/plugins/flicking.js', mode: 'client', ssr: true },
+    { src: '~/plugins/flicking.js' },
     { src: '~/plugins/vuex-sync' },
   ],
 
@@ -50,6 +50,14 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['gsap'],
+    loaders: {
+      vue: {
+        compilerOptions: {
+          // This option is highly recommended
+          preserveWhitespace: false,
+        },
+      },
+    },
     extractCSS: {
       ignoreOrder: false,
     },

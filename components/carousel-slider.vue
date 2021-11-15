@@ -3,7 +3,7 @@
     <Flicking
       id="carousel"
       :options="{
-        align: 'center',
+        align: 'prev',
         circular: true,
         autoInit: true,
         horizontal: true,
