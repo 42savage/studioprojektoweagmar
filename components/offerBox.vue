@@ -68,7 +68,7 @@ ul {
 @media (min-width: 1024px) {
   .wrapper {
     width: 336px;
-    height: 420px;
+    min-height: 420px;
     justify-content: space-around;
   }
 }

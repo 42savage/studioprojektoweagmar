@@ -1,23 +1,36 @@
 <template>
   <div class="wrapper">
-    <form class="flex f-center f-col">
+    <form class="flex f-center f-col" @submit.prevent="sendEmail">
       <input
         class="name input"
         type="text"
+        v-model="name"
         placeholder="Twoje imię i nazwisko"
       />
-      <input class="mail input" type="text" placeholder="Adres e-mail" />
+      <input
+        class="mail input"
+        type="text"
+        placeholder="Adres e-mail"
+        v-model="email"
+      />
       <div clas="row flex f-center f-row">
-        <input class="phone input" type="text" placeholder="Numer telefonu" />
+        <input
+          class="phone input"
+          type="text"
+          placeholder="Numer telefonu"
+          v-model="phone"
+        />
         <input
           class="company input"
           type="text"
           placeholder="Firma (opcjonalnie)"
+          v-model="company"
         />
       </div>
       <textarea
         class="message input"
         placeholder="Twoja wiadomość..."
+        v-model="content"
       ></textarea>
       <button class="submit">Wyślij wiadomość</button>
     </form>
@@ -35,13 +48,38 @@
         style="border: 0"
         allowfullscreen=""
         loading="lazy"
+        name="Mapa"
       ></iframe>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      name: '',
+      company: '',
+      content: '',
+      email: '',
+      phone: '',
+    };
+  },
+  methods: {
+    sendEmail() {
+      this.$mail.send({
+        from: this.name,
+        subject: `Zapytanie o projekt od ${this.company} ${this.name}`,
+        text: `
+    Nazwa: ${this.name}
+    Kontakt: ${this.phone}
+    Treść wiadomości: ${this.content}
+  `,
+      });
+      console.log(this.$mail);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

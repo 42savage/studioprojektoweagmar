@@ -7,9 +7,11 @@
           <p class="subtitle">Projektujemy wnętrza</p>
           <p class="bolder">Klasyczne i nowoczesne</p>
           <p class="text">
-            Jesteśmy nowopowstałym studiem projektowym, które postawiło sobie za
-            cel tworzenie zarówno nowoczesnych jak i klasycznych wizualiacji
-            przyjmenych dla oka.
+            Jesteśmy studiem projektowym, które postawiło sobie za cel tworzenie
+            zarówno nowoczesnych jak i klasycznych wizualizacji. Na tle
+            konkurencji wyróżniamy się tym, że nasi projektanci na codzień mają
+            styczność z meblami. Daje nam to pewność, że projekt wdrożony w
+            życie będzie wyglądał dokładnie tak samo jak na papierze
           </p>
           <button class="checkBtn flex f-row f-center">
             <div class="arrow flex f-center">
@@ -117,7 +119,6 @@ export default {
       this.tl = this.$gsap.timeline();
     },
     changeSet(direction) {
-      console.log(direction);
       if (this.currentSet < this.slides.length - 1 && direction === 'next') {
         this.currentSet += 1;
       } else if (this.currentSet > 0 && direction === 'prev') {

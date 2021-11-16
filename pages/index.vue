@@ -1,6 +1,6 @@
 <template>
   <div ref="container" class="container">
-    <!-- <subTransmision /> -->
+    <subTransmision />
     <carousel-slider />
     <big-picture-slider />
     <section id="offer" class="offer">
@@ -89,6 +89,10 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.info {
+  color: #929292;
+  padding: 48px 36px;
+}
 .container {
   max-width: 100vw;
   max-height: 100vh;

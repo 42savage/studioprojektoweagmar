@@ -1,6 +1,7 @@
 <template>
   <div ref="container">
-    <!-- <entryTransition /> -->
+    <messenger />
+    <entryTransition />
     <navigation />
     <div>
       <left-bar />

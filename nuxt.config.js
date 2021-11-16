@@ -1,4 +1,9 @@
+require('dotenv').config();
+
 export default {
+  axios: {
+    baseURL: process.env.BASE_URL,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Studio projektowe Agmar',
@@ -50,7 +55,26 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/sitemap'],
+  modules: [
+    '@nuxtjs/sitemap',
+    '@nuxtjs/axios',
+    [
+      'nuxt-mail',
+      {
+        message: {
+          to: process.env.EMAIL,
+        },
+        smtp: {
+          host: process.env.EMAIL_HOST,
+          port: process.env.EMAIL_PORT,
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASSWORD,
+          },
+        },
+      },
+    ],
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

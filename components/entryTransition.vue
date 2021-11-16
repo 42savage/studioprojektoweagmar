@@ -1,8 +1,8 @@
 <template>
   <div class="container" ref="container" v-scroll-lock="showLoader">
     <div ref="logo" class="logo">
-      <h1>Studio projektowe</h1>
-      <h2>AGMAR</h2>
+      <p>Studio projektowe</p>
+      <p>AGMAR</p>
     </div>
     <div class="wrapper" ref="stripes">
       <div class="stripe"></div>
@@ -67,20 +67,20 @@ export default {
 }
 .logo {
   color: white;
-  h1 {
+  p:nth-child(1) {
     font-size: 22px;
   }
-  h2 {
+  p:nth-child(2) {
     font-size: 72px;
   }
 }
 @media (min-width: 1024px) {
   .logo {
     color: white;
-    h1 {
+    p:nth-child(1) {
       font-size: 62px;
     }
-    h2 {
+    p:nth-child(2) {
       font-size: 142px;
     }
   }

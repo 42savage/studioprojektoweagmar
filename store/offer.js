@@ -3,17 +3,17 @@ export const state = () => ({
     {
       id: 0,
       backgroundURI: 's3',
-      name: 'projekt-koncepcyjny',
-      title: 'Projekt koncepcyjny',
+      name: 'projekt-dowolnego-pomieszczenia',
+      title: 'Projekt dowonlego pomieszczenia',
       seoDesc:
         '⭐Projekt, który z pewnością pomoże Ci wyobrazić sobie jak może wyglądać Twój wymarzony salon, kuchnia, sypialnia czy nawet całe mieszkanie.⭐',
-      content: 'W skład projektu koncepcyjnego wchodzą następujące usługi:',
+      content: 'W skład projektu wchodzą następujące usługi:',
       list: [
         'Inwentaryzacja pomieszczeń',
         'Konsultacje z projektantem',
         'Wizualizacje 3D',
       ],
-      text: 'Projekt wykonywany jest bezpośrednio w domu u klienta podczas pomiaru.',
+      text: 'Zaprojektujemy dowolnie wybrane pomieszczeni tak aby było jak najbardziej funkcjonalne. A spędzanie w nim czasu było jak najbardziej dla Ciebie przyjemne.',
     },
     {
       id: 1,
@@ -29,7 +29,7 @@ export const state = () => ({
         'Wizualizacja 3D',
         'Specyfikacja produktów wraz z cenami',
       ],
-      text: 'Projekt wykonawczy jest nieco bardziej czasochłonny niż projekt koncepcyjny, dlatego nie jesteśmy w stanie wykonać go na miejscu u klienta lecz u nas w biurze.',
+      text: 'Projekt wykonawczy charakteryzuje się większą personalizacją od pozostałych projektów. Jako klient masz do wyboru szerszy wachlarz możliwości. Zaczynając od doboru materiału na meble czy też systemów zainstalowanych w szafkach, kończąc aż na kolorze każdej ze ścian. O doborze systemów dowiesz się więcej kontaktując się z nami',
     },
     {
       id: 2,
@@ -37,10 +37,10 @@ export const state = () => ({
       name: 'projekt-kuchni',
       title: 'Projekt kuchni',
       seoDesc:
-        '⭐Projekt samej kuchni, który wykonywany jest nawet u klienta, pomaga wyobrazić sobie kuchnie. Do wyboru zastosowane systemy oraz rozmieszczenie gniazdek⭐',
+        '⭐Projekt skupiony jest na jak najpraktyczniejszym ułożeniu mebli z zachowaniem odpowiedniego umiejscowienia elektrycznych.⭐',
       content: 'Indywidualny projekt w skład którego wchodzi:',
       list: ['Pierwszy punkt', 'drugi punkt', 'trzeci punkt', 'czwarty punkt'],
-      text: 'Zarówno jak projekt koncepcyjny, projekt kuchni jesteśmy w stanie wykonać u klienta. Wizualizacja już podczas pomiaru znacznie pomaga wyobraźić sobie przyszłą kuchnie.',
+      text: 'Projekt skupiony jest na jak najpraktyczniejszym ułożeniu mebli z zachowaniem odpowiedniego umiejscowienia elektrycznych.',
     },
   ],
   offerOptions: [

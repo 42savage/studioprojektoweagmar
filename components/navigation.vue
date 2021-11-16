@@ -161,6 +161,7 @@ export default {
   text-decoration: none;
 }
 .main-navigation {
+  z-index: 999999;
   display: flex;
   justify-content: space-between;
   padding: 48px 36px 0;

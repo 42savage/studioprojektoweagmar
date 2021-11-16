@@ -20,14 +20,14 @@
     <div class="email">
       <a class="email" href="mailto:daniel.meble@wp.pl">
         <icons-pictograms-email :fill="'#DEBE95'" :width="34" :height="34" />
-        <span>mail@mail.com</span>
+        <span>kontakt@agmar.pl</span>
       </a>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped lang="scss">
