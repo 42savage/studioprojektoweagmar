@@ -1,63 +1,72 @@
 <template>
-  <nav
-    v-if="this.$route.name === 'index'"
-    class="main-navigation"
-    v-scroll-lock="state"
-  >
-    <nuxt-link class="homeBtn" to="/">
-      <div @click="changeState('logo')" class="logo flex f-center f-col">
-        <p class="small">Studio projektowe</p>
-        <p class="big">AGMAR</p>
+  <div class="wrapper">
+    <nav
+      v-show="this.$route.name === 'index'"
+      class="main-navigation"
+      v-scroll-lock="state"
+    >
+      <nuxt-link class="homeBtn" to="/">
+        <div @click="changeState('logo')" class="logo flex f-center f-col">
+          <p class="small">Studio projektowe</p>
+          <p class="big">AGMAR</p>
+        </div>
+      </nuxt-link>
+      <ul ref="list" class="list mob">
+        <li @click="changeState">
+          <NuxtLink class="link active" to="/">Home</NuxtLink>
+        </li>
+        <li @click="changeState">
+          <a href="#offer" class="link">Oferta</a>
+        </li>
+        <li @click="changeState">
+          <a href="#realisations">Realizacje</a>
+        </li>
+        <li @click="changeState">
+          <a href="#contact" class="link">Kontakt</a>
+        </li>
+      </ul>
+      <div ref="bottom" class="bottom-contact f-col f-center">
+        <div class="socials flex f-row f-center">
+          <a href="https://www.facebook.com/MebleNaWymiarAgmar" target="_blank"
+            ><icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24"
+          /></a>
+          <a
+            href="https://www.instagram.com/agmarmeblenawymiar/"
+            target="_blank"
+            ><icons-socials-instagram
+              :fill="'#A5A5A5'"
+              :width="24"
+              :height="24"
+          /></a>
+          <a href="https://mebleagmar.pl/" target="_blank"
+            ><icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24"
+          /></a>
+        </div>
+        <div class="contact-row flex f-row">
+          <a class="button flex f-center" href="tel:698088271">Telefon</a>
+          <a class="button flex f-center" href="mailto: meble@agmar.pl"
+            >Email</a
+          >
+        </div>
       </div>
-    </nuxt-link>
-    <ul ref="list" class="list mob">
-      <li @click="changeState">
-        <NuxtLink class="link" to="/">Home</NuxtLink>
-      </li>
-      <li @click="changeState">
-        <a href="#offer" class="link">Oferta</a>
-      </li>
-      <li @click="changeState">
-        <a href="#realisations">Realizacje</a>
-      </li>
-      <li @click="changeState">
-        <a href="#contact" class="link">Kontakt</a>
-      </li>
-    </ul>
-    <div ref="bottom" class="bottom-contact f-col f-center">
-      <div class="socials flex f-row f-center">
-        <a href="https://www.facebook.com/MebleNaWymiarAgmar" target="_blank"
-          ><icons-socials-facebook :fill="'#A5A5A5'" :width="24" :height="24"
-        /></a>
-        <a href="https://www.instagram.com/agmarmeblenawymiar/" target="_blank"
-          ><icons-socials-instagram :fill="'#A5A5A5'" :width="24" :height="24"
-        /></a>
-        <a href="https://mebleagmar.pl/" target="_blank"
-          ><icons-socials-web :fill="'#A5A5A5'" :width="24" :height="24"
-        /></a>
-      </div>
-      <div class="contact-row flex f-row">
-        <a class="button flex f-center" href="tel:698088271">Telefon</a>
-        <a class="button flex f-center" href="mailto: meble@agmar.pl">Email</a>
-      </div>
-    </div>
-    <button ref="hamBtn" @click="changeState" class="hamButton flex">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </button>
-  </nav>
-  <nav class="main-navigation" v-else>
-    <nuxt-link class="homeBtn" to="/">
-      <div @click="changeState('logo')" class="logo">
-        <p class="small">Studio projektowe</p>
-        <p class="big">AGMAR</p>
-      </div>
-    </nuxt-link>
-    <nuxt-link to="/" class="backButton">
-      <icons-smallArrow />
-    </nuxt-link>
-  </nav>
+      <button ref="hamBtn" @click="changeState" class="hamButton flex">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </button>
+    </nav>
+    <nav class="main-navigation" v-show="this.$route.name !== 'index'">
+      <nuxt-link class="homeBtn" to="/">
+        <div @click="changeState('logo')" class="logo">
+          <p class="small">Studio projektowe</p>
+          <p class="big">AGMAR</p>
+        </div>
+      </nuxt-link>
+      <nuxt-link to="/" class="backButton">
+        <icons-smallArrow />
+      </nuxt-link>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -71,10 +80,9 @@ export default {
   },
   methods: {
     changeState(e) {
-      console.log(window.matchMedia('max-width: 620').matches);
-      if (window.matchMedia('(max-width: 620px)').matches) {
+      if (window.matchMedia('(max-width: 1024px)').matches) {
         // If user clicks on logo go back to homepage;
-        // If users is on index page and scrolled at least 800px down scoll top
+        // If users is on index page and scrolled at least 800px  down then scoll top
         // If menu is opened close menu and set state to false because of body overflow locked
         if (e === 'logo') {
           this.tl.reverse();
@@ -90,10 +98,8 @@ export default {
         } else {
           this.state = !this.state;
           if (this.state) {
-            console.log(this.state, 'state play');
             this.tl.play();
           } else {
-            console.log(this.state, 'state reverse');
             this.tl.reverse();
           }
         }
@@ -102,7 +108,7 @@ export default {
   },
   mounted() {
     if (
-      window.matchMedia('(max-width: 620px)').matches &&
+      window.matchMedia('(max-width: 1024px)').matches &&
       this.$route.name === 'index'
     ) {
       const tl = this.tl;
@@ -156,6 +162,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// .active {
+//   position: relative;
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 200%;
+//     left: 0px;
+//     background: #debe95;
+//     width: 100%;
+//     height: 4px;
+//   }
+// }
 .homeBtn {
   z-index: 99;
   text-decoration: none;
@@ -203,7 +221,7 @@ export default {
   list-style-type: none;
   display: none;
   opacity: 0;
-  font-size: 48px;
+  font-size: 36px;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -270,6 +288,17 @@ export default {
 @media (min-width: 1024px) {
   .main-navigation {
     padding: 60px 120px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 0;
+      margin: 0 116px;
+      width: calc(100% - 236px);
+      height: 80px;
+      background-color: rgba(2, 2, 2, 0.068);
+      backdrop-filter: blur(5px);
+    }
   }
   .logo {
     border-left: 1px solid white;

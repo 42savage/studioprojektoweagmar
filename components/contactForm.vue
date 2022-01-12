@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper">
-    <form class="flex f-center f-col" @submit.prevent="sendEmail">
+    <form class="flex f-center f-col" @submit.prevent="checkForm">
+      <div class="error">
+        <li v-for="(error, index) in error.list" :key="index">
+          {{ error }}
+        </li>
+      </div>
       <input
         class="name input"
         type="text"
@@ -29,8 +34,8 @@
       </div>
       <textarea
         class="message input"
-        placeholder="Twoja wiadomość..."
-        v-model="content"
+        placeholder="Opisz w kiku zdaniach projekt, którego mamy się podjąć."
+        v-model="body"
       ></textarea>
       <button class="submit">Wyślij wiadomość</button>
     </form>
@@ -60,31 +65,129 @@ export default {
     return {
       name: '',
       company: '',
-      content: '',
+      body: '',
       email: '',
       phone: '',
+      subject: '',
+      showModal: {
+        state: false,
+        message: '',
+      },
+      error: {
+        name: true,
+        body: false,
+        email: false,
+        phone: false,
+      },
+    };
+  },
+  head() {
+    return {
+      script: [
+        {
+          src: 'https://smtpjs.com/v3/smtp.js',
+        },
+      ],
     };
   },
   methods: {
     sendEmail() {
-      this.$mail.send({
-        from: this.name,
-        subject: `Zapytanie o projekt od ${this.company} ${this.name}`,
-        text: `
-    Nazwa: ${this.name}
-    Kontakt: ${this.phone}
-    Treść wiadomości: ${this.content}
-  `,
-      });
-      console.log(this.$mail);
+      if (!this.error.state) {
+        Email.send({
+          Host: process.env.MHOST,
+          Username: process.env.MUSER,
+          Password: process.env.MPASS,
+          To: process.env.MTO,
+          From: process.env.MUSER,
+          Subject: `[Projekt] Wiadomość od ${this.email}  `,
+          Body: `
+        Temat: ${this.subject}
+        Wiadomość od: ${this.name}
+        Firma: ${this.company}
+        Numer telefonu: ${this.phone}
+        `,
+        }).then(() => {
+          this.successAlert();
+        });
+      }
     },
+    checkForm() {
+      if (this.name.length === 0) {
+        this.error.name = true;
+      } else {
+        this.error.name = false;
+      }
+      if (this.body.length === 0) {
+        this.error.body = true;
+      } else {
+        this.error.body = false;
+      }
+      if (this.email.length === 0) {
+        this.error.email = true;
+      } else {
+        this.error.mail = false;
+      }
+      if (this.phone.length === 0) {
+        this.error.phone = true;
+      } else {
+        this.error.phone = false;
+      }
+
+      for (const [key, value] of Object.entries(this.error)) {
+        if (value === true) {
+          console.log(`${key}: ${value}`);
+        }
+      }
+    },
+    successAlert() {
+      this.showModal.state = true;
+      this.showModal.message =
+        'Fantastycznie, twoja wiadomość została do nas wysłana. Wkrótce się z Tobą skonntaktujemy.';
+      if (this.showModal.state === true) {
+        this.tl.play();
+      }
+      [
+        (this.name,
+        this.company,
+        this.body,
+        this.email,
+        this.phone,
+        this.subject),
+      ].forEach((e) => {
+        e = '';
+      });
+      setTimeout(() => {
+        this.showModal.state = false;
+        this.tl.reverse();
+      }, 4000);
+    },
+  },
+  mounted() {
+    this.$gsap.set(this.$refs.alertBox, {
+      display: 'none',
+      y: -200,
+    });
+
+    this.tl = this.$gsap.timeline({ paused: true });
+    this.tl.fromTo(
+      this.$refs.alertBox,
+      {
+        y: 100,
+        display: 'none',
+      },
+      {
+        y: -200,
+        display: 'flex',
+      }
+    );
   },
 };
 </script>
 
 <style lang="scss" scoped>
 form {
-  margin: 36px;
+  // margin: 36px;
+  padding: 24px 36px;
   div {
     margin: 0 9px;
     width: 100%;
@@ -94,6 +197,7 @@ form {
   background: #c7c7c7;
   padding: 12px;
   width: 100%;
+  margin: 0 48px;
   height: 42px;
   border: none;
   color: #595959;
@@ -106,6 +210,7 @@ form {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 6px;
+  color: #debe95;
 }
 .contact {
   justify-content: center;
@@ -125,18 +230,16 @@ form {
   color: #21252a;
   padding: 12px 12px;
   font-weight: 700;
+  cursor: pointer;
 }
 .map {
   display: none;
 }
 @media (min-width: 1024px) {
-  form {
-    min-width: 360px;
-  }
   .wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0 120px;
   }
   .map {
@@ -156,8 +259,9 @@ form {
 }
 @media (min-width: 1440px) {
   form {
-    width: 460px;
-    margin: 60px 0;
+    width: 600px;
+    margin: 0;
+    padding: 0;
   }
   .wrapper {
     justify-content: space-between;

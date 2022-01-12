@@ -12,13 +12,20 @@
       </a>
     </div>
     <div class="phone">
-      <a href="tel:698088271">
+      <a
+        href="tel:698088271"
+        title="Kliknij w numer telefonu, aby przesłać go na twojego smartfona."
+      >
         <icons-pictograms-phone :fill="'#DEBE95'" :width="34" :height="34" />
         <span>698-088-271</span>
       </a>
     </div>
     <div class="email">
-      <a class="email" href="mailto:daniel.meble@wp.pl">
+      <a
+        class="email"
+        href="mailto:kontakt@projekty-agmar.pl"
+        title="Kliknij w adres e-mail, aby otworzył się klient e-mail"
+      >
         <icons-pictograms-email :fill="'#DEBE95'" :width="34" :height="34" />
         <span>kontakt@agmar.pl</span>
       </a>

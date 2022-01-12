@@ -14,7 +14,10 @@
           v-for="image in images"
           class="singleRealisation"
           :key="image.id"
-          :style="{ backgroundImage: `url(${image.src})` }"
+          :style="{
+            'background-image':
+              'url(' + require(`@/assets/offer/${image.src}`) + ')',
+          }"
         ></div>
       </Flicking>
     </client-only>
@@ -29,17 +32,52 @@ export default {
         {
           id: 0,
           alt: 'Na fotografii widoczna jest łazienka w modernistycznym stylu',
-          src: 'r1.jpg',
+          src: 'ki1.jpg',
         },
         {
           id: 1,
           alt: 'Na fotografii widoczny jest salon w ciemnej zabudowie',
-          src: 'r2.jpg',
+          src: 'ki2.jpg',
         },
         {
           id: 2,
           alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
-          src: 'r3.jpg',
+          src: 'ki3.jpg',
+        },
+        {
+          id: 3,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'ki4.jpg',
+        },
+        {
+          id: 4,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'pk1.jpg',
+        },
+        {
+          id: 5,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'pk2.jpg',
+        },
+        {
+          id: 6,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'pk3.jpg',
+        },
+        {
+          id: 7,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'pw1.jpg',
+        },
+        {
+          id: 8,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'pw2.jpg',
+        },
+        {
+          id: 9,
+          alt: 'Na fotografii widoczna jest kuchnia w nowoczesnym zabudowaniu',
+          src: 'pw3.jpg',
         },
       ],
     };

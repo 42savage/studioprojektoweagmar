@@ -8,11 +8,7 @@ export const state = () => ({
       seoDesc:
         '⭐Projekt, który z pewnością pomoże Ci wyobrazić sobie jak może wyglądać Twój wymarzony salon, kuchnia, sypialnia czy nawet całe mieszkanie.⭐',
       content: 'W skład projektu wchodzą następujące usługi:',
-      list: [
-        'Inwentaryzacja pomieszczeń',
-        'Konsultacje z projektantem',
-        'Wizualizacje 3D',
-      ],
+      list: ['Konsultacje z projektantem', 'Wizualizacje 3D', 'Dobór systemów'],
       text: 'Zaprojektujemy dowolnie wybrane pomieszczeni tak aby było jak najbardziej funkcjonalne. A spędzanie w nim czasu było jak najbardziej dla Ciebie przyjemne.',
     },
     {
@@ -37,17 +33,21 @@ export const state = () => ({
       name: 'projekt-kuchni',
       title: 'Projekt kuchni',
       seoDesc:
-        '⭐Projekt skupiony jest na jak najpraktyczniejszym ułożeniu mebli z zachowaniem odpowiedniego umiejscowienia elektrycznych.⭐',
+        '⭐Projekt skupiony jest na jak najpraktyczniejszym ułożeniu mebli z zachowaniem odpowiedniego umiejscowienia gniazdek elektrycznych.⭐',
       content: 'Indywidualny projekt w skład którego wchodzi:',
-      list: ['Pierwszy punkt', 'drugi punkt', 'trzeci punkt', 'czwarty punkt'],
-      text: 'Projekt skupiony jest na jak najpraktyczniejszym ułożeniu mebli z zachowaniem odpowiedniego umiejscowienia elektrycznych.',
+      list: ['Konsultacje z projektantem', 'Wizualizacja 3D', 'Dobór systemów'],
+      text: 'Projekt skupiony jest na jak najpraktyczniejszym ułożeniu mebli z zachowaniem odpowiedniego umiejscowienia gniazdek elektrycznych.',
     },
   ],
   offerOptions: [
     {
       id: 0,
       title: 'Idea',
-      contains: ['projekt-kuchni', 'projekt-koncepcyjny', 'projekt-wykonawczy'],
+      contains: [
+        'projekt-kuchni',
+        'projekt-dowolnego-pomieszczenia',
+        'projekt-wykonawczy',
+      ],
       content: 'Wstępny zarys projektu',
       icon: 'icons-pictograms-bulb',
       active: false,
@@ -55,7 +55,11 @@ export const state = () => ({
     {
       id: 1,
       title: 'Konsultacje',
-      contains: ['projekt-kuchni', 'projekt-koncepcyjny', 'projekt-wykonawczy'],
+      contains: [
+        'projekt-kuchni',
+        'projekt-dowolnego-pomieszczenia',
+        'projekt-wykonawczy',
+      ],
       content: 'Konsultacje z projektantem',
       icon: 'icons-pictograms-headphone',
       active: false,
@@ -63,17 +67,20 @@ export const state = () => ({
     {
       id: 2,
       title: 'Specyfikacja',
-      contains: ['projekt-koncepcyjny', 'projekt-wykonawczy'],
+      contains: ['projekt-dowolnego-pomieszczenia', 'projekt-wykonawczy'],
       content: 'Wykaz potrzebnych materiałów',
       icon: 'icons-pictograms-stack',
       active: false,
-      route: { name: 'Projekt koncepcyjny', to: 'projekt-koncepcyjny' },
+      route: {
+        name: 'Projekt koncepcyjny',
+        to: 'projekt-dowolnego-pomieszczenia',
+      },
     },
     {
       id: 3,
-      title: 'Punkt #4',
+      title: 'Przygotowanie',
       contains: ['projekt-wykonawczy'],
-      content: 'Czwarte i ostatnie coś tam',
+      content: 'Przygotowanie mebli pod realizację',
       icon: 'icons-pictograms-blur',
       active: false,
       route: { name: 'Projekt wykonawczy', to: 'projekt-wykonawczy' },
@@ -91,7 +98,7 @@ export const state = () => ({
   offerContent: [
     {
       id: 0,
-      contains: ['projekt-koncepcyjny'],
+      contains: ['projekt-dowolnego-pomieszczenia'],
       text: 'Projekt wyróżnia się tym, że jest wykonywany u klienta na miejscu, co z pewnością pomaga wyobrażeniu sobie finalnego wyglądu wymarznej kuchni. Przekłada się to na szybkość realizacji oraz jakość.',
       images: ['pk1', 'pk2', 'pk3'],
     },
@@ -105,7 +112,7 @@ export const state = () => ({
       id: 2,
       contains: ['projekt-kuchni'],
       text: 'Projekt skupiony wyłącznie na kuchni. Klient do wyboru ma systemu jakie mają być zastosowane w poszczególnych szafkach czy też układy szuflad.',
-      images: ['pk1', 'pk2', 'pk3'],
+      images: ['ki1', 'ki2', 'ki3', 'ki4'],
     },
   ],
 });

@@ -18,8 +18,8 @@ export default {
     const elements = this.$gsap.utils.toArray(this.$refs.stripes.children);
     tl.to(elements, {
       xPercent: 100,
-      stagger: 0.4,
-      duration: 1,
+      stagger: 0.2,
+      duration: 0.8,
       ease: 'power1.in',
     }).to(this.$refs.stripes, {
       display: 'none',
@@ -41,7 +41,7 @@ export default {
 }
 .stripe {
   width: 100%;
-  height: 33%;
+  height: 33.333%;
   background: #24282d;
 }
 .logo {

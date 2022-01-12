@@ -8,7 +8,14 @@
         id="offer-title"
         :title="'Oferta'"
         :subtitle="'Nasza oferta'"
+        :bottomMargin="0"
       />
+      <p class="entryText">
+        Jako studio projektowe zajmujemy się tworzeniem wizualizacji 3D wnętrz.
+        Możesz pomóc swojej wyobraźni w zwizualizowaniu na przykład swojej
+        wymarzonej kuchni. Śmiało, skontaktuj się z nami, nasi projektanci
+        chętnie zaprojektują dla Ciebie twoje wymoarzone pomieszczenie.
+      </p>
       <div class="offerList">
         <offerBox
           v-for="offer in offerList"
@@ -26,7 +33,7 @@
         :title="'Realizacje'"
         :subtitle="'Nasze realizacje'"
         :titleSize="62"
-        :bottomMargin="42"
+        :bottomMargin="0"
       />
       <p class="entryText">
         Do każdej realizacji podchodzimy indywidualnie. Nasze projekty to nie
@@ -73,11 +80,56 @@ export default {
     }),
   },
   methods: {
-    prevSlide() {
-      this.tl.reverse();
+    revealSections() {
+      const sections = this.$gsap.utils.toArray('section');
+      sections.forEach((section) => {
+        this.$gsap.fromTo(
+          section.children,
+          {
+            y: 100,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.2,
+            duration: 1,
+            ease: 'easeInOut',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              // markers: true,
+              toggleActions: 'play pause resume reverse',
+            },
+          }
+        );
+      });
     },
-    nextSlide() {
-      this.tl.play();
+    markMenu() {
+      const sections = this.$gsap.utils.toArray('section');
+      const links = this.$gsap.utils.toArray('.list li');
+      sections.forEach((section) => {
+        this.$gsap.fromTo(
+          links.children,
+          {
+            color: 'white',
+            opacity: 0,
+          },
+          {
+            color: 'red',
+            opacity: 1,
+            stagger: 0.2,
+            duration: 1,
+            ease: 'easeInOut',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              // markers: true,
+              toggleActions: 'play pause resume reverse',
+            },
+          }
+        );
+      });
     },
   },
   transition: {
@@ -85,7 +137,10 @@ export default {
       this.test = true;
     },
   },
-  mounted() {},
+  mounted() {
+    this.revealSections();
+    // this.markMenu();
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -135,7 +190,7 @@ export default {
 }
 .entryText {
   color: white;
-  padding: 36px;
+  padding: 0 36px;
 }
 @media (min-width: 1024px) {
   .offerList {

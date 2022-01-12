@@ -1,5 +1,5 @@
 <template>
-  <div ref="container">
+  <div ref="container" class="dynia">
     <messenger />
     <entryTransition />
     <navigation />
@@ -7,6 +7,7 @@
       <left-bar />
       <Nuxt />
     </div>
+    <!-- <cookies /> -->
   </div>
 </template>
 <script></script>
@@ -16,6 +17,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
 }
 body {
   background: #21252a;

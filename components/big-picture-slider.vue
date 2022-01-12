@@ -4,26 +4,26 @@
       <div class="left-content">
         <div class="content">
           <p class="title">AGMAR</p>
-          <p class="subtitle">Projektujemy wnętrza</p>
-          <p class="bolder">Klasyczne i nowoczesne</p>
+          <p class="subtitle">Studio projektowe</p>
+          <h2 class="bolder">Projektujemy wnętrza klasyczne i nowoczesne</h2>
           <p class="text">
             Jesteśmy studiem projektowym, które postawiło sobie za cel tworzenie
-            zarówno nowoczesnych jak i klasycznych wizualizacji. Na tle
+            zarówno nowoczesnych jak i klasycznych wizualizacji wnętrz. Na tle
             konkurencji wyróżniamy się tym, że nasi projektanci na codzień mają
             styczność z meblami. Daje nam to pewność, że projekt wdrożony w
-            życie będzie wyglądał dokładnie tak samo jak na papierze
+            życie będzie wyglądał dokładnie tak samo jak na papierze.
           </p>
           <button class="checkBtn flex f-row f-center">
             <div class="arrow flex f-center">
               <icons-arrow-right />
             </div>
-            Sprawdź nasze realizacje
+            <a id="chrel" href="#realisations">Sprawdź nasze realizacje</a>
           </button>
         </div>
       </div>
       <div class="right-content">
         <div class="single-image">
-          <img src="r1.jpg" alt="Image" />
+          <img src="@/assets/offer/pw1.jpg" alt="Image" />
         </div>
         <div class="custom-slider f-row f-center" ref="slider">
           <div
@@ -33,6 +33,7 @@
           >
             <div class="stripe"></div>
             <img
+              draggable="false"
               :src="require(`/assets/custom-slider/${slides.src}.jpg`)"
               alt="Zdjęcie podzielone na 4 części, przedstawia kuchnie"
             />
@@ -207,6 +208,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#chrel {
+  color: #debe95;
+  text-decoration: none;
+  &:visited {
+    color: #debe95;
+    text-decoration: none;
+  }
+}
 .stripe {
   width: 100%;
   height: 100%;
@@ -223,6 +232,7 @@ export default {
   display: none;
   width: 100%;
   height: 100vh;
+  max-height: 620px;
   padding: 162px 120px 0;
 }
 .title {
@@ -347,7 +357,7 @@ export default {
 }
 @media (min-width: 1440px) {
   .text {
-    font-size: 32px;
+    font-size: 26px;
     width: 600px;
   }
   .navigation {

@@ -5,12 +5,12 @@
       'background-image': 'url(' + require(`@/assets/${image}.jpg`) + ')',
     }"
   >
-    <h1>{{ title }}</h1>
+    <!-- <h1>{{ title }}</h1>
     <h2>{{ subTitle }}</h2>
     <p>
       {{ text }}
     </p>
-    <nuxt-link class="btn" to="/realizacje">Sprawdź nasze realizacje</nuxt-link>
+    <nuxt-link class="btn" to="/realizacje">Sprawdź nasze realizacje</nuxt-link> -->
   </div>
 </template>
 

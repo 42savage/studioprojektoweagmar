@@ -1,10 +1,6 @@
 require('dotenv').config();
 
 export default {
-  axios: {
-    baseURL: process.env.BASE_URL,
-  },
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Studio projektowe Agmar',
     htmlAttrs: {
@@ -17,7 +13,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Zajmujemy się tworzeniem wysokiej jakości wizualizacji 3D kuchni i innych pomieszczeń mieszkalnych. Nie czekaj, skontaktuj się z nami jak najszybciej!',
+          'Zajmujemy się tworzeniem wysokiej jakości wizualizacji 3D kuchni i innych pomieszczeń mieszkalnych. Chcesz dowiedzieć jak wygląda twoja wymarzona kuchnia? Nie czekaj, skontaktuj się z nami!',
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],
@@ -46,35 +42,17 @@ export default {
     { src: '~/plugins/scrollLock.js', mode: 'client' },
     { src: '~/plugins/flicking.js', mode: 'server', ssr: false },
     { src: '~/plugins/vuex-sync' },
+    { src: '~/plugins/gtag.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: ['@nuxtjs/dotenv'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/sitemap',
-    '@nuxtjs/axios',
-    [
-      'nuxt-mail',
-      {
-        message: {
-          to: process.env.EMAIL,
-        },
-        smtp: {
-          host: process.env.EMAIL_HOST,
-          port: process.env.EMAIL_PORT,
-          auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASSWORD,
-          },
-        },
-      },
-    ],
-  ],
+  modules: ['@nuxtjs/sitemap'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

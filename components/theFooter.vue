@@ -87,7 +87,7 @@ footer {
   color: white;
   text-align: center;
   width: 100%;
-  margin: 30px 0;
+  margin: 80px 0;
   span {
     color: crimson;
   }

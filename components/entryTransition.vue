@@ -56,7 +56,7 @@ export default {
 }
 .stripe {
   width: 100%;
-  height: 33%;
+  height: 33.333%;
   background: #24282d;
 }
 .logo {
