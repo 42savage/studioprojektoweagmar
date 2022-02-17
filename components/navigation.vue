@@ -284,6 +284,7 @@ export default {
   height: 36px;
   background: none;
   border: none;
+  z-index: 99;
 }
 @media (min-width: 1024px) {
   .main-navigation {

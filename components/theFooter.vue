@@ -1,5 +1,8 @@
 <template>
   <footer>
+    <p class="cookies">
+      Strona do poprawnego działania może wykorzystywać pliki cookies.
+    </p>
     <p class="author">
       Projekt i realizacja <a href="https://savageagency.pl/">SAVAGE AGENCY</a>
     </p>
@@ -72,6 +75,10 @@ export default {
       state: false,
     };
   },
+  mounted() {
+    console.log('footer consoel log');
+    console.log(this.$gtag);
+  },
 };
 </script>
 
@@ -137,6 +144,15 @@ footer {
   a:visited,
   a:link {
     color: #929292;
+  }
+}
+.cookies {
+  color: gray;
+  margin: 0 40px;
+}
+@media (min-width: 1024px) {
+  .cookies {
+    margin: 0 140px;
   }
 }
 </style>
