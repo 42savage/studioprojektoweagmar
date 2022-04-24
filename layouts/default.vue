@@ -1,5 +1,6 @@
 <template>
   <div ref="container" class="dynia">
+    <theVideo v-if="showVideo" v-scroll-lock="showVideo" />
     <messenger />
     <entryTransition />
     <navigation />
@@ -10,7 +11,14 @@
     <!-- <cookies /> -->
   </div>
 </template>
-<script></script>
+<script>
+import { mapState } from 'vuex';
+export default {
+  computed: {
+    ...mapState(['showVideo']),
+  },
+};
+</script>
 <style>
 * {
   margin: 0;

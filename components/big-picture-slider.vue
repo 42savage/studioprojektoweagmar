@@ -17,7 +17,7 @@
             <div class="arrow flex f-center">
               <icons-arrow-right />
             </div>
-            <a id="chrel" href="#realisations">Sprawdź nasze realizacje</a>
+            <a id="chrel" @click="toggleVideo">Zobacz jak to robimy</a>
           </button>
         </div>
       </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -88,7 +89,7 @@ export default {
               src: 'fit4',
             },
           ],
-          title: 'Apartament "Bekas"',
+          title: 'Apartament "Żegota"',
         },
         {
           id: 0,
@@ -116,6 +117,8 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['toggleVideo']),
+
     initSlider() {
       this.tl = this.$gsap.timeline();
     },

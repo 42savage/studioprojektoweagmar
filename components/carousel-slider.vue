@@ -10,9 +10,9 @@
           styczność z meblami. Daje nam to pewność, że projekt wdrożony w życie
           będzie wyglądał dokładnie tak samo jak na papierze.
         </p>
-        <a href="#realisations" class="realisationBtn">
-          Sprawdź nasze realizacje
-        </a>
+        <button @click="toggleVideo" class="realisationBtn">
+          Zobacz jak to robimy
+        </button>
       </div>
       <Flicking
         id="carousel"
@@ -35,12 +35,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapGetters({
       slides: 'slider/slides',
     }),
+  },
+  methods: {
+    ...mapActions(['toggleVideo']),
   },
 };
 </script>

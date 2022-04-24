@@ -75,10 +75,7 @@ export default {
       state: false,
     };
   },
-  mounted() {
-    console.log('footer consoel log');
-    console.log(this.$gtag);
-  },
+  mounted() {},
 };
 </script>
 
